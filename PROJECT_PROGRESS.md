@@ -42,3 +42,10 @@ Legenda: **Testado e aprovado** · **Implementado** (sem teste automatizável) �
 - Implementado: `mapa-operacoes.md` (gerado executando os componentes), `relatorio-semana-05.md` (invariantes ↔ testes), `simulacao-sequencial.md`.
 - Pendente — ação sua: **executar o simulador de flip-flops e preencher a coluna "Resultado no simulador da aula"** (5 experimentos); nomes/revisor; PR revisada e tag `s05`.
 - Decisão: deslocamentos SLL/SRL usam só os 5 bits menos significativos de `b` (como no RV32I).
+
+## Semana 6 — Ciclo de instrução e memórias (branch `entrega/semana-06-ciclo-instrucao`)
+
+- Testado e aprovado: memória de instruções, memória de dados (alinhamento, faixa, erro com endereço e causa, sem escrita parcial), executor de 5 estados com `step_stage()`, microssequência CADD/CSTORE/CLOAD (x3=12, mem[0]=12, x4=12, PC=0x0000000C). 251 testes, 251 aprovados (47 novos).
+- Modificado: `cpu.py` usa `InstructionMemory`.
+- Implementado: `trace-projeto.json` (15 eventos), `verificacao-manual.md`, `interfaces-barramento.md`, `diagrama-ciclo.md` (Mermaid), relatório com comparação manual × automático (coincide).
+- Pendente — ação sua: **laboratório web da Semana 06 e `trace-laboratorio.json`**; nomes/revisor; PR revisada e tag `s06`.

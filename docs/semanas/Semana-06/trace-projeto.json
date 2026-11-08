@@ -1,0 +1,235 @@
+[
+  {
+    "seq": 1,
+    "pc": "0x00000000",
+    "word": "0x01000001",
+    "stage": "FETCH",
+    "signals": {
+      "IMemRead": 1
+    },
+    "operands": {},
+    "change": {}
+  },
+  {
+    "seq": 2,
+    "pc": "0x00000000",
+    "word": "0x01000001",
+    "stage": "DECODE",
+    "signals": {
+      "op": "CADD",
+      "classe": "R",
+      "RegWrite": 1,
+      "ALUSrc": 0,
+      "MemRead": 0,
+      "MemWrite": 0,
+      "Branch": 0
+    },
+    "operands": {
+      "x1": 5,
+      "x2": 7
+    },
+    "change": {}
+  },
+  {
+    "seq": 3,
+    "pc": "0x00000000",
+    "word": "0x01000001",
+    "stage": "EXECUTE",
+    "signals": {
+      "ALUOp": "ADD",
+      "ALUSrc": 0
+    },
+    "operands": {
+      "a": 5,
+      "b": 7,
+      "alu_result": 12
+    },
+    "change": {}
+  },
+  {
+    "seq": 4,
+    "pc": "0x00000000",
+    "word": "0x01000001",
+    "stage": "MEMORY",
+    "signals": {
+      "MemRead": 0,
+      "MemWrite": 0
+    },
+    "operands": {},
+    "change": {}
+  },
+  {
+    "seq": 5,
+    "pc": "0x00000000",
+    "word": "0x01000001",
+    "stage": "WRITEBACK",
+    "signals": {
+      "RegWrite": 1
+    },
+    "operands": {
+      "x1": 5,
+      "x2": 7
+    },
+    "change": {
+      "x3": 12,
+      "pc_next": "0x00000004"
+    }
+  },
+  {
+    "seq": 6,
+    "pc": "0x00000004",
+    "word": "0x02000002",
+    "stage": "FETCH",
+    "signals": {
+      "IMemRead": 1
+    },
+    "operands": {},
+    "change": {}
+  },
+  {
+    "seq": 7,
+    "pc": "0x00000004",
+    "word": "0x02000002",
+    "stage": "DECODE",
+    "signals": {
+      "op": "CSTORE",
+      "classe": "STORE",
+      "RegWrite": 0,
+      "ALUSrc": 1,
+      "MemRead": 0,
+      "MemWrite": 1,
+      "Branch": 0
+    },
+    "operands": {
+      "x0": 0,
+      "x3": 12
+    },
+    "change": {}
+  },
+  {
+    "seq": 8,
+    "pc": "0x00000004",
+    "word": "0x02000002",
+    "stage": "EXECUTE",
+    "signals": {
+      "ALUOp": "ADD",
+      "ALUSrc": 1
+    },
+    "operands": {
+      "a": 0,
+      "b": 0,
+      "alu_result": 0
+    },
+    "change": {}
+  },
+  {
+    "seq": 9,
+    "pc": "0x00000004",
+    "word": "0x02000002",
+    "stage": "MEMORY",
+    "signals": {
+      "MemRead": 0,
+      "MemWrite": 1
+    },
+    "operands": {
+      "address": 0,
+      "value": 12
+    },
+    "change": {
+      "mem[0]": 12
+    }
+  },
+  {
+    "seq": 10,
+    "pc": "0x00000004",
+    "word": "0x02000002",
+    "stage": "WRITEBACK",
+    "signals": {
+      "RegWrite": 0
+    },
+    "operands": {
+      "x0": 0,
+      "x3": 12
+    },
+    "change": {
+      "pc_next": "0x00000008"
+    }
+  },
+  {
+    "seq": 11,
+    "pc": "0x00000008",
+    "word": "0x03000003",
+    "stage": "FETCH",
+    "signals": {
+      "IMemRead": 1
+    },
+    "operands": {},
+    "change": {}
+  },
+  {
+    "seq": 12,
+    "pc": "0x00000008",
+    "word": "0x03000003",
+    "stage": "DECODE",
+    "signals": {
+      "op": "CLOAD",
+      "classe": "LOAD",
+      "RegWrite": 1,
+      "ALUSrc": 1,
+      "MemRead": 1,
+      "MemWrite": 0,
+      "Branch": 0
+    },
+    "operands": {
+      "x0": 0
+    },
+    "change": {}
+  },
+  {
+    "seq": 13,
+    "pc": "0x00000008",
+    "word": "0x03000003",
+    "stage": "EXECUTE",
+    "signals": {
+      "ALUOp": "ADD",
+      "ALUSrc": 1
+    },
+    "operands": {
+      "a": 0,
+      "b": 0,
+      "alu_result": 0
+    },
+    "change": {}
+  },
+  {
+    "seq": 14,
+    "pc": "0x00000008",
+    "word": "0x03000003",
+    "stage": "MEMORY",
+    "signals": {
+      "MemRead": 1,
+      "MemWrite": 0
+    },
+    "operands": {
+      "address": 0,
+      "value": 12
+    },
+    "change": {}
+  },
+  {
+    "seq": 15,
+    "pc": "0x00000008",
+    "word": "0x03000003",
+    "stage": "WRITEBACK",
+    "signals": {
+      "RegWrite": 1
+    },
+    "operands": {
+      "x0": 0
+    },
+    "change": {
+      "x4": 12,
+      "pc_next": "0x0000000C"
+    }
+  }
+]

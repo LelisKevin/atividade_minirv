@@ -45,18 +45,18 @@ Status: **Testado e aprovado** (coberto por testes automatizados que passaram) �
 | R38 | 5 | Sequência de testes leitura→cálculo→escrita (x1=5, x2=7, x3=12) | S5 P9 | tests/test_sequencia.py | Testado e aprovado | 92 testes novos; suíte: 204 aprovados |
 | R39 | 5 | Relatório da Semana 05 (invariantes, cobertura, limitações) | S5 P11 | docs/semanas/Semana-05/relatorio-semana-05.md | Implementado | Mapa gerado executando os componentes; relatório com invariantes ↔ testes |
 | R40 | 5 | PR revisada e tag s05 | S5 P12 | GitHub | Pendente — ação sua | PR revisada e tag s05 no GitHub |
-| R41 | 6 | Laboratório da Semana 06 executado e trace-laboratorio salvo | S6 P1 | docs/semanas/Semana-06/trace-laboratorio.json | Pendente |  |
-| R42 | 6 | Memória de instruções (read_word) | S6 P3 | minirv/instruction_memory.py | Pendente |  |
-| R43 | 6 | Memória de dados (read/write word, alinhamento, faixa, erro com endereço e causa) | S6 P3 | minirv/data_memory.py | Pendente |  |
-| R44 | 6 | interfaces-barramento.md refletindo o código | S6 P4 | docs/semanas/Semana-06/interfaces-barramento.md | Pendente |  |
-| R45 | 6 | Estados FETCH/DECODE/EXECUTE/MEMORY/WRITEBACK observáveis | S6 P5 | minirv/executor.py | Pendente |  |
-| R46 | 6 | Microssequência de 3 instruções controladas (estado inicial e final obrigatórios) | S6 P6 | minirv/executor.py, tests/test_executor.py | Pendente |  |
-| R47 | 6 | verificacao-manual.md | S6 P7 | docs/semanas/Semana-06/verificacao-manual.md | Pendente |  |
-| R48 | 6 | Rastro arquitetural JSON do projeto (seq, pc, word, stage, signals, operands, change) | S6 P8 | docs/semanas/Semana-06/trace-projeto.json | Pendente |  |
-| R49 | 6 | Testes de alinhamento e acessos inválidos | S6 P9 | tests/test_data_memory.py | Pendente |  |
-| R50 | 6 | Relatório com comparação manual × automático e total de testes | S6 P10/12 | docs/semanas/Semana-06/relatorio-semana-06.md | Pendente |  |
-| R51 | 6 | Diagrama do ciclo (PC, imem, controle, registradores, ULA, dmem) | S6 P11 | docs/semanas/Semana-06/diagrama-ciclo.md | Pendente |  |
-| R52 | 6 | PR revisada e tag s06 | S6 P13 | GitHub | Pendente |  |
+| R41 | 6 | Laboratório da Semana 06 executado e trace-laboratorio salvo | S6 P1 | docs/semanas/Semana-06/trace-laboratorio.json | Pendente — ação sua | Laboratório web da Semana 06 e exportação do trace-laboratorio.json |
+| R42 | 6 | Memória de instruções (read_word) | S6 P3 | minirv/instruction_memory.py | Testado e aprovado | 47 testes novos; suíte: 251 aprovados; trace-projeto.json com 15 eventos |
+| R43 | 6 | Memória de dados (read/write word, alinhamento, faixa, erro com endereço e causa) | S6 P3 | minirv/data_memory.py | Testado e aprovado | 47 testes novos; suíte: 251 aprovados; trace-projeto.json com 15 eventos |
+| R44 | 6 | interfaces-barramento.md refletindo o código | S6 P4 | docs/semanas/Semana-06/interfaces-barramento.md | Implementado | Documentos criados; comparação manual × automático coincide nos 4 itens; diagrama em Mermaid |
+| R45 | 6 | Estados FETCH/DECODE/EXECUTE/MEMORY/WRITEBACK observáveis | S6 P5 | minirv/executor.py | Testado e aprovado | 47 testes novos; suíte: 251 aprovados; trace-projeto.json com 15 eventos |
+| R46 | 6 | Microssequência de 3 instruções controladas (estado inicial e final obrigatórios) | S6 P6 | minirv/executor.py, tests/test_executor.py | Testado e aprovado | 47 testes novos; suíte: 251 aprovados; trace-projeto.json com 15 eventos |
+| R47 | 6 | verificacao-manual.md | S6 P7 | docs/semanas/Semana-06/verificacao-manual.md | Implementado | Documentos criados; comparação manual × automático coincide nos 4 itens; diagrama em Mermaid |
+| R48 | 6 | Rastro arquitetural JSON do projeto (seq, pc, word, stage, signals, operands, change) | S6 P8 | docs/semanas/Semana-06/trace-projeto.json | Testado e aprovado | 47 testes novos; suíte: 251 aprovados; trace-projeto.json com 15 eventos |
+| R49 | 6 | Testes de alinhamento e acessos inválidos | S6 P9 | tests/test_data_memory.py | Testado e aprovado | 47 testes novos; suíte: 251 aprovados; trace-projeto.json com 15 eventos |
+| R50 | 6 | Relatório com comparação manual × automático e total de testes | S6 P10/12 | docs/semanas/Semana-06/relatorio-semana-06.md | Implementado | Documentos criados; comparação manual × automático coincide nos 4 itens; diagrama em Mermaid |
+| R51 | 6 | Diagrama do ciclo (PC, imem, controle, registradores, ULA, dmem) | S6 P11 | docs/semanas/Semana-06/diagrama-ciclo.md | Implementado | Documentos criados; comparação manual × automático coincide nos 4 itens; diagrama em Mermaid |
+| R52 | 6 | PR revisada e tag s06 | S6 P13 | GitHub | Pendente — ação sua | PR revisada e tag s06 no GitHub |
 | R53 | 7 | Simulador da Semana 07 executado e vetores exportados | S7 P1 | docs/semanas/Semana-07/vetores-simulador.json | Pendente |  |
 | R54 | 7 | rv32i-subset-v1.md com as 19 instruções e tabela completa de codificação | S7 P3 | docs/isa/rv32i-subset-v1.md | Pendente |  |
 | R55 | 7 | Layouts R, I, S, B, U e J documentados com posição e largura | S7 P4 | docs/isa/rv32i-subset-v1.md §2 | Pendente |  |

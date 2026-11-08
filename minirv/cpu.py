@@ -4,6 +4,7 @@ import sys
 
 from minirv.alu import execute
 from minirv.decoder import decode, format_assembly
+from minirv.instruction_memory import InstructionMemory
 from minirv.pc import ProgramCounter
 from minirv.registers import RegisterFile
 from minirv.trace import Trace, hex32
@@ -30,7 +31,7 @@ def load_hex(path):
 
 class CPU:
     def __init__(self, program):
-        self.program = list(program)
+        self.imem = InstructionMemory(program)
         self.regs = RegisterFile()
         self._pc = ProgramCounter()
         self.trace = Trace()
@@ -44,11 +45,10 @@ class CPU:
         """Executa uma instrução. Retorna o registro de trace, ou None se o programa terminou."""
         if self.halted:
             return None
-        index = self.pc // 4  # o PC é sempre múltiplo de 4 (ProgramCounter valida)
-        if index >= len(self.program):
+        if self.pc >= self.imem.size_bytes:
             self.halted = True  # fim do programa: PC saiu da memória de instruções
             return None
-        word = self.program[index]
+        word = self.imem.read_word(self.pc)
         d = decode(word)
         written = {}
         if d["mnemonic"] == "ADD":
