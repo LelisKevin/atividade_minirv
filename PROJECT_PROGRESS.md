@@ -49,3 +49,11 @@ Legenda: **Testado e aprovado** · **Implementado** (sem teste automatizável) �
 - Modificado: `cpu.py` usa `InstructionMemory`.
 - Implementado: `trace-projeto.json` (15 eventos), `verificacao-manual.md`, `interfaces-barramento.md`, `diagrama-ciclo.md` (Mermaid), relatório com comparação manual × automático (coincide).
 - Pendente — ação sua: **laboratório web da Semana 06 e `trace-laboratorio.json`**; nomes/revisor; PR revisada e tag `s06`.
+
+## Semana 7 — Contrato RV32I v1 (branch `entrega/semana-07-isa-rv32i`)
+
+- Testado e aprovado: `isa.py` (lê o contrato `.md` como fonte única), `encoder.py`, `decoder.py` generalizado (19 instruções, 6 formatos), 43 vetores válidos + 43 negativos, ida e volta aleatória (200.000 palavras), conferência com o manual RISC-V e com o capstone, programa preliminar conferido contra o contrato. 574 testes, 574 aprovados (323 novos). Teste de mutação: 4 de 4 erros injetados foram detectados.
+- Implementado: `docs/isa/rv32i-subset-v1.md` (tabela, 6 layouts, sintaxe, erros, regularidade), `mapeamento-carga-isa.md`, `controlador-preliminar.s` (não executado), `ADR-TEMPLATE.md`, relatório.
+- Decisões: offsets de branch/jump múltiplos de 4; SLL/SRL por registrador; E/S em 0xFFFF0000 é premissa da dupla.
+- **Contrato em "candidato a congelamento":** só vira "CONGELADA" depois da PR revisada (guia, Passo 12).
+- Pendente — ação sua: executar o simulador da Semana 07 e salvar `vetores-simulador.json`; revisão cruzada da PR; congelar o contrato; tag `s07`.

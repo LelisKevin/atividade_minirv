@@ -57,21 +57,21 @@ Status: **Testado e aprovado** (coberto por testes automatizados que passaram) �
 | R50 | 6 | Relatório com comparação manual × automático e total de testes | S6 P10/12 | docs/semanas/Semana-06/relatorio-semana-06.md | Implementado | Documentos criados; comparação manual × automático coincide nos 4 itens; diagrama em Mermaid |
 | R51 | 6 | Diagrama do ciclo (PC, imem, controle, registradores, ULA, dmem) | S6 P11 | docs/semanas/Semana-06/diagrama-ciclo.md | Implementado | Documentos criados; comparação manual × automático coincide nos 4 itens; diagrama em Mermaid |
 | R52 | 6 | PR revisada e tag s06 | S6 P13 | GitHub | Pendente — ação sua | PR revisada e tag s06 no GitHub |
-| R53 | 7 | Simulador da Semana 07 executado e vetores exportados | S7 P1 | docs/semanas/Semana-07/vetores-simulador.json | Pendente |  |
-| R54 | 7 | rv32i-subset-v1.md com as 19 instruções e tabela completa de codificação | S7 P3 | docs/isa/rv32i-subset-v1.md | Pendente |  |
-| R55 | 7 | Layouts R, I, S, B, U e J documentados com posição e largura | S7 P4 | docs/isa/rv32i-subset-v1.md §2 | Pendente |  |
-| R56 | 7 | Sintaxe, registradores, imediatos, rótulos e mensagens de erro | S7 P5 | docs/isa/rv32i-subset-v1.md §4 | Pendente |  |
-| R57 | 7 | encode e decode usando a mesma especificação do contrato | S7 P6 | minirv/isa.py, encoder.py, decoder.py | Pendente |  |
-| R58 | 7 | ≥1 vetor válido por instrução (19) | S7 P7 | tests/vectors/rv32i-v1.json | Pendente |  |
-| R59 | 7 | Testes negativos: registrador inválido, imediato fora da faixa, opcode/funct não suportado | S7 P7 | tests/test_isa_negativos.py | Pendente |  |
-| R60 | 7 | Propriedade encode → decode preserva mnemônico e campos | S7 P8 | tests/test_isa_vetores.py, test_isa_roundtrip.py | Pendente |  |
-| R61 | 7 | mapeamento-carga-isa.md | S7 P9 | docs/semanas/Semana-07/mapeamento-carga-isa.md | Pendente |  |
-| R62 | 7 | Programa Assembly preliminar (leitura, decisão, estado, escrita, laço) | S7 P10 | docs/semanas/Semana-07/controlador-preliminar.s | Pendente |  |
-| R63 | 7 | Seção 'Impacto da regularidade' sem afirmar RISC universalmente melhor | S7 P11 | docs/isa/rv32i-subset-v1.md §6 | Pendente |  |
-| R64 | 7 | Contrato v1 declarado congelado após revisão + modelo de ADR | S7 P12 | docs/isa/rv32i-subset-v1.md, docs/adr/ADR-TEMPLATE.md | Pendente |  |
-| R65 | 7 | Suíte completa sem regressões, PR revisada e tag s07 | S7 P13-14 | GitHub | Pendente |  |
+| R53 | 7 | Simulador da Semana 07 executado e vetores exportados | S7 P1 | docs/semanas/Semana-07/vetores-simulador.json | Pendente — ação sua | Executar o simulador web e salvar vetores-simulador.json (não foi inventado) |
+| R54 | 7 | rv32i-subset-v1.md com as 19 instruções e tabela completa de codificação | S7 P3 | docs/isa/rv32i-subset-v1.md | Testado e aprovado | 323 testes novos; suíte: 574 aprovados; vetores validados também pelo capstone e por mutação |
+| R55 | 7 | Layouts R, I, S, B, U e J documentados com posição e largura | S7 P4 | docs/isa/rv32i-subset-v1.md §2 | Testado e aprovado | 323 testes novos; suíte: 574 aprovados; vetores validados também pelo capstone e por mutação |
+| R56 | 7 | Sintaxe, registradores, imediatos, rótulos e mensagens de erro | S7 P5 | docs/isa/rv32i-subset-v1.md §4 | Implementado | Seções 4, 5 e 6 do contrato; mapeamento da carga |
+| R57 | 7 | encode e decode usando a mesma especificação do contrato | S7 P6 | minirv/isa.py, encoder.py, decoder.py | Testado e aprovado | 323 testes novos; suíte: 574 aprovados; vetores validados também pelo capstone e por mutação |
+| R58 | 7 | ≥1 vetor válido por instrução (19) | S7 P7 | tests/vectors/rv32i-v1.json | Testado e aprovado | 323 testes novos; suíte: 574 aprovados; vetores validados também pelo capstone e por mutação |
+| R59 | 7 | Testes negativos: registrador inválido, imediato fora da faixa, opcode/funct não suportado | S7 P7 | tests/test_isa_negativos.py | Testado e aprovado | 323 testes novos; suíte: 574 aprovados; vetores validados também pelo capstone e por mutação |
+| R60 | 7 | Propriedade encode → decode preserva mnemônico e campos | S7 P8 | tests/test_isa_vetores.py, test_isa_roundtrip.py | Testado e aprovado | 323 testes novos; suíte: 574 aprovados; vetores validados também pelo capstone e por mutação |
+| R61 | 7 | mapeamento-carga-isa.md | S7 P9 | docs/semanas/Semana-07/mapeamento-carga-isa.md | Implementado | Seções 4, 5 e 6 do contrato; mapeamento da carga |
+| R62 | 7 | Programa Assembly preliminar (leitura, decisão, estado, escrita, laço) | S7 P10 | docs/semanas/Semana-07/controlador-preliminar.s | Testado e aprovado | Sintaxe, faixas e rótulos conferidos contra o contrato; o programa NÃO foi executado (Semana 08) |
+| R63 | 7 | Seção 'Impacto da regularidade' sem afirmar RISC universalmente melhor | S7 P11 | docs/isa/rv32i-subset-v1.md §6 | Implementado | Seções 4, 5 e 6 do contrato; mapeamento da carga |
+| R64 | 7 | Contrato v1 declarado congelado após revisão + modelo de ADR | S7 P12 | docs/isa/rv32i-subset-v1.md, docs/adr/ADR-TEMPLATE.md | Pendente — ação sua | ADR-TEMPLATE criado; contrato está 'candidato a congelamento' até a PR ser revisada |
+| R65 | 7 | Suíte completa sem regressões, PR revisada e tag s07 | S7 P13-14 | GitHub | Pendente — ação sua | PR revisada e tag s07 no GitHub |
 | R66 | 8 | LACUNA: documento da Semana 8 não fornecido (a Semana 07 prevê montador + execução de Assembly) | S7 (intro) | Decisão pendente do usuário | Pendente |  |
 | R67 | 8 | Consolidação: suíte completa, matriz, documentação e versão definitiva | Roteiro do usuário | Esta matriz, README, PROJECT_PROGRESS.md | Pendente |  |
-| C01 | todas | Palavra de 32 bits; x0-x31; x0 imutável; PC de 32 bits; memória endereçada por byte | S5, S7 | word32, registers, pc, data_memory | Testado e aprovado | word32 (32 bits); registers: x0 imutável; demais itens verificados nas semanas 5 a 7 |
-| C02 | todas | Componentes existentes reutilizados, sem duplicação | S7 §2 | Revisão de código (decoder único, ALU única) | Implementado | ProgramCounter e word32 reutilizados; CPU usa ALU/PC/registradores únicos (verificado por revisão de código) |
-| C03 | todas | Suíte das semanas anteriores continua passando a cada semana | S5, S6, S7 | pytest -q por semana | Pendente |  |
+| C01 | todas | Palavra de 32 bits; x0-x31; x0 imutável; PC de 32 bits; memória endereçada por byte | S5, S7 | word32, registers, pc, data_memory | Testado e aprovado | word32, registers (x0), pc (32 bits), memórias por byte little-endian |
+| C02 | todas | Componentes existentes reutilizados, sem duplicação | S7 §2 | Revisão de código (decoder único, ALU única) | Implementado | Um só decodificador (generalizado), uma ALU, um PC; benchmark passou a usar encode() |
+| C03 | todas | Suíte das semanas anteriores continua passando a cada semana | S5, S6, S7 | pytest -q por semana | Testado e aprovado | pytest -q: 574 aprovados na Semana 7 (26→33→60→112→204→251→574) |

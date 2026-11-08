@@ -1,0 +1,452 @@
+[
+ {
+  "descricao": "registrador acima de 31 em rs1",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "ADD",
+   "rd": 3,
+   "rs1": 32,
+   "rs2": 2
+  },
+  "erro": "InvalidRegisterError",
+  "mensagem": "registrador inválido: x32 no campo rs1 de ADD"
+ },
+ {
+  "descricao": "registrador negativo em rd",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "ADDI",
+   "rd": -1,
+   "rs1": 0,
+   "imm": 1
+  },
+  "erro": "InvalidRegisterError",
+  "mensagem": "x-1 no campo rd"
+ },
+ {
+  "descricao": "registrador dado como texto",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "ADD",
+   "rd": 3,
+   "rs1": "x1",
+   "rs2": 2
+  },
+  "erro": "InvalidRegisterError",
+  "mensagem": "'x1'"
+ },
+ {
+  "descricao": "registrador booleano",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "SUB",
+   "rd": true,
+   "rs1": 1,
+   "rs2": 2
+  },
+  "erro": "InvalidRegisterError",
+  "mensagem": "True"
+ },
+ {
+  "descricao": "rs2 inválido em SW",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "SW",
+   "rs1": 1,
+   "rs2": 40,
+   "imm": 0
+  },
+  "erro": "InvalidRegisterError",
+  "mensagem": "x40 no campo rs2 de SW"
+ },
+ {
+  "descricao": "ADDI acima de 2047",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "ADDI",
+   "rd": 1,
+   "rs1": 0,
+   "imm": 2048
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "imediato fora da faixa: 2048 em ADDI"
+ },
+ {
+  "descricao": "ADDI abaixo de -2048",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "ADDI",
+   "rd": 1,
+   "rs1": 0,
+   "imm": -2049
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "-2049"
+ },
+ {
+  "descricao": "LW acima da faixa",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "LW",
+   "rd": 1,
+   "rs1": 0,
+   "imm": 2048
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "em LW"
+ },
+ {
+  "descricao": "SW abaixo da faixa",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "SW",
+   "rs1": 0,
+   "rs2": 1,
+   "imm": -2049
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "em SW"
+ },
+ {
+  "descricao": "BEQ acima de 4092",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "BEQ",
+   "rs1": 0,
+   "rs2": 0,
+   "imm": 4096
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "fora da faixa: 4096 em BEQ"
+ },
+ {
+  "descricao": "BLT abaixo de -4096",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "BLT",
+   "rs1": 0,
+   "rs2": 0,
+   "imm": -4100
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "-4100"
+ },
+ {
+  "descricao": "JAL acima da faixa",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "JAL",
+   "rd": 1,
+   "imm": 1048576
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "em JAL"
+ },
+ {
+  "descricao": "LUI negativo",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "LUI",
+   "rd": 1,
+   "imm": -1
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "em LUI"
+ },
+ {
+  "descricao": "LUI acima de 20 bits",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "LUI",
+   "rd": 1,
+   "imm": 1048576
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "1048576 em LUI"
+ },
+ {
+  "descricao": "BEQ com offset 6",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "BEQ",
+   "rs1": 1,
+   "rs2": 2,
+   "imm": 6
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "imediato desalinhado: 6 em BEQ (exige múltiplo de 4)"
+ },
+ {
+  "descricao": "BNE com offset 2",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "BNE",
+   "rs1": 1,
+   "rs2": 2,
+   "imm": 2
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "desalinhado"
+ },
+ {
+  "descricao": "JAL com offset 1",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "JAL",
+   "rd": 1,
+   "imm": 1
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "desalinhado"
+ },
+ {
+  "descricao": "imediato texto",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "ADDI",
+   "rd": 1,
+   "rs1": 0,
+   "imm": "5"
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "esperado inteiro"
+ },
+ {
+  "descricao": "imediato float",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "ADDI",
+   "rd": 1,
+   "rs1": 0,
+   "imm": 5.0
+  },
+  "erro": "ImmediateRangeError",
+  "mensagem": "esperado inteiro"
+ },
+ {
+  "descricao": "MUL não suportado",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "MUL",
+   "rd": 1,
+   "rs1": 2,
+   "rs2": 3
+  },
+  "erro": "UnsupportedInstructionError",
+  "mensagem": "instrução não suportada: MUL"
+ },
+ {
+  "descricao": "ECALL não suportado",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "ECALL"
+  },
+  "erro": "UnsupportedInstructionError",
+  "mensagem": "ECALL"
+ },
+ {
+  "descricao": "mnemônico minúsculo",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "add",
+   "rd": 1,
+   "rs1": 2,
+   "rs2": 3
+  },
+  "erro": "UnsupportedInstructionError",
+  "mensagem": "add"
+ },
+ {
+  "descricao": "SW não possui rd",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "SW",
+   "rd": 1,
+   "rs1": 2,
+   "rs2": 3,
+   "imm": 0
+  },
+  "erro": "FieldMismatchError",
+  "mensagem": "campo incompatível: SW não possui rd"
+ },
+ {
+  "descricao": "LUI não possui rs1",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "LUI",
+   "rd": 1,
+   "rs1": 2,
+   "imm": 0
+  },
+  "erro": "FieldMismatchError",
+  "mensagem": "LUI não possui rs1"
+ },
+ {
+  "descricao": "ADD não possui imm",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "ADD",
+   "rd": 1,
+   "rs1": 2,
+   "rs2": 3,
+   "imm": 4
+  },
+  "erro": "FieldMismatchError",
+  "mensagem": "ADD não possui imm"
+ },
+ {
+  "descricao": "BEQ não possui rd",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "BEQ",
+   "rd": 1,
+   "rs1": 2,
+   "rs2": 3,
+   "imm": 4
+  },
+  "erro": "FieldMismatchError",
+  "mensagem": "BEQ não possui rd"
+ },
+ {
+  "descricao": "ADD sem rs2",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "ADD",
+   "rd": 1,
+   "rs1": 2
+  },
+  "erro": "FieldMismatchError",
+  "mensagem": "campo ausente: ADD exige rs2"
+ },
+ {
+  "descricao": "ADDI sem imm",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "ADDI",
+   "rd": 1,
+   "rs1": 2
+  },
+  "erro": "FieldMismatchError",
+  "mensagem": "ADDI exige imm"
+ },
+ {
+  "descricao": "JAL com rs1",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "JAL",
+   "rd": 1,
+   "rs1": 2,
+   "imm": 0
+  },
+  "erro": "FieldMismatchError",
+  "mensagem": "JAL não possui rs1"
+ },
+ {
+  "descricao": "format divergente",
+  "operacao": "encode",
+  "entrada": {
+   "mnemonic": "ADD",
+   "format": "I",
+   "rd": 1,
+   "rs1": 2,
+   "rs2": 3
+  },
+  "erro": "FieldMismatchError",
+  "mensagem": "formato correto: R"
+ },
+ {
+  "descricao": "sem mnemonic",
+  "operacao": "encode",
+  "entrada": {
+   "rd": 1
+  },
+  "erro": "FieldMismatchError",
+  "mensagem": "mnemonic"
+ },
+ {
+  "descricao": "MUL (funct7 0000001)",
+  "operacao": "decode",
+  "entrada": "0x02208033",
+  "erro": "UnsupportedInstructionError",
+  "mensagem": "instrução não suportada: 0x02208033 (opcode=0110011, funct3=000, funct7=0000001)"
+ },
+ {
+  "descricao": "ECALL",
+  "operacao": "decode",
+  "entrada": "0x00000073",
+  "erro": "UnsupportedInstructionError",
+  "mensagem": "opcode=1110011"
+ },
+ {
+  "descricao": "palavra zero",
+  "operacao": "decode",
+  "entrada": "0x00000000",
+  "erro": "UnsupportedInstructionError",
+  "mensagem": "opcode=0000000"
+ },
+ {
+  "descricao": "palavra 0xFFFFFFFF",
+  "operacao": "decode",
+  "entrada": "0xFFFFFFFF",
+  "erro": "UnsupportedInstructionError",
+  "mensagem": "0xFFFFFFFF"
+ },
+ {
+  "descricao": "LB (opcode LOAD, funct3 000)",
+  "operacao": "decode",
+  "entrada": "0x00050503",
+  "erro": "UnsupportedInstructionError",
+  "mensagem": "funct3=000"
+ },
+ {
+  "descricao": "SLLI (OP-IMM, funct3 001)",
+  "operacao": "decode",
+  "entrada": "0x00109093",
+  "erro": "UnsupportedInstructionError",
+  "mensagem": "funct3=001"
+ },
+ {
+  "descricao": "SRA (funct7 0100000, funct3 101)",
+  "operacao": "decode",
+  "entrada": "0x4020D0B3",
+  "erro": "UnsupportedInstructionError",
+  "mensagem": "funct7=0100000"
+ },
+ {
+  "descricao": "BGE (branch, funct3 101)",
+  "operacao": "decode",
+  "entrada": "0x00005063",
+  "erro": "UnsupportedInstructionError",
+  "mensagem": "funct3=101"
+ },
+ {
+  "descricao": "JALR com funct3 001",
+  "operacao": "decode",
+  "entrada": "0x00009067",
+  "erro": "UnsupportedInstructionError",
+  "mensagem": "opcode=1100111"
+ },
+ {
+  "descricao": "BEQ com offset 2 na palavra",
+  "operacao": "decode",
+  "entrada": "0x00000163",
+  "erro": "ImmediateRangeError",
+  "mensagem": "desalinhado"
+ },
+ {
+  "descricao": "JAL com offset 2 na palavra",
+  "operacao": "decode",
+  "entrada": "0x002000EF",
+  "erro": "ImmediateRangeError",
+  "mensagem": "desalinhado"
+ },
+ {
+  "descricao": "palavra como texto",
+  "operacao": "decode",
+  "entrada": {
+   "raw": "0x13"
+  },
+  "erro": "InvalidWordError",
+  "mensagem": "palavra inválida"
+ }
+]

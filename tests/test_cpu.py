@@ -65,3 +65,9 @@ def test_linha_de_comando(tmp_path):
     assert r.returncode == 0, r.stderr
     assert out.exists() and '"ADD x3, x1, x2"' in out.read_text(encoding="utf-8")
     assert "'x3': 12" in r.stderr
+
+
+def test_instrucao_decodificada_mas_nao_executada_gera_erro_explicito():
+    from minirv.encoder import encode
+    with pytest.raises(ValueError, match="ainda não executada pela CPU: SUB"):
+        CPU([encode({"mnemonic": "SUB", "rd": 1, "rs1": 2, "rs2": 3})]).run()

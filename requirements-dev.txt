@@ -1,0 +1,2 @@
+# Opcional: validação independente das codificações (tests/test_isa_capstone.py). Sem ele, o teste é ignorado.
+capstone>=5.0

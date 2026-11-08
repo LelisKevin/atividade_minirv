@@ -23,9 +23,9 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from minirv.cpu import CPU  # noqa: E402
+from minirv.encoder import encode  # noqa: E402
 
 BASE = ROOT / "benchmarks" / "baseline"
-MASK32 = 0xFFFFFFFF
 
 
 def gerar_entrada(n):
@@ -46,19 +46,11 @@ def ler_entrada(path):
         return [int(row["temperatura_c"]) for row in csv.DictReader(f)]
 
 
-def _addi(rd, rs1, imm):
-    return ((imm & 0xFFF) << 20) | (rs1 << 15) | (0 << 12) | (rd << 7) | 0b0010011
-
-
-def _add(rd, rs1, rs2):
-    return (rs2 << 20) | (rs1 << 15) | (0 << 12) | (rd << 7) | 0b0110011
-
-
 def montar_programa(temperaturas):
     palavras = []
     for t in temperaturas:
-        palavras.append(_addi(1, 0, t))
-        palavras.append(_add(2, 2, 1))
+        palavras.append(encode({"mnemonic": "ADDI", "rd": 1, "rs1": 0, "imm": t}))
+        palavras.append(encode({"mnemonic": "ADD", "rd": 2, "rs1": 2, "rs2": 1}))
     return palavras
 
 

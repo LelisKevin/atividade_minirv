@@ -1,0 +1,466 @@
+[
+ {
+  "assembly": "ADD x3, x1, x2",
+  "word": "0x002081B3",
+  "expected": {
+   "mnemonic": "ADD",
+   "format": "R",
+   "rd": 3,
+   "rs1": 1,
+   "rs2": 2
+  }
+ },
+ {
+  "assembly": "SUB x5, x6, x7",
+  "word": "0x407302B3",
+  "expected": {
+   "mnemonic": "SUB",
+   "format": "R",
+   "rd": 5,
+   "rs1": 6,
+   "rs2": 7
+  }
+ },
+ {
+  "assembly": "AND x8, x9, x10",
+  "word": "0x00A4F433",
+  "expected": {
+   "mnemonic": "AND",
+   "format": "R",
+   "rd": 8,
+   "rs1": 9,
+   "rs2": 10
+  }
+ },
+ {
+  "assembly": "OR x11, x12, x13",
+  "word": "0x00D665B3",
+  "expected": {
+   "mnemonic": "OR",
+   "format": "R",
+   "rd": 11,
+   "rs1": 12,
+   "rs2": 13
+  }
+ },
+ {
+  "assembly": "XOR x14, x15, x16",
+  "word": "0x0107C733",
+  "expected": {
+   "mnemonic": "XOR",
+   "format": "R",
+   "rd": 14,
+   "rs1": 15,
+   "rs2": 16
+  }
+ },
+ {
+  "assembly": "SLT x17, x18, x19",
+  "word": "0x013928B3",
+  "expected": {
+   "mnemonic": "SLT",
+   "format": "R",
+   "rd": 17,
+   "rs1": 18,
+   "rs2": 19
+  }
+ },
+ {
+  "assembly": "SLL x20, x21, x22",
+  "word": "0x016A9A33",
+  "expected": {
+   "mnemonic": "SLL",
+   "format": "R",
+   "rd": 20,
+   "rs1": 21,
+   "rs2": 22
+  }
+ },
+ {
+  "assembly": "SRL x23, x24, x25",
+  "word": "0x019C5BB3",
+  "expected": {
+   "mnemonic": "SRL",
+   "format": "R",
+   "rd": 23,
+   "rs1": 24,
+   "rs2": 25
+  }
+ },
+ {
+  "assembly": "ADD x31, x31, x31",
+  "word": "0x01FF8FB3",
+  "expected": {
+   "mnemonic": "ADD",
+   "format": "R",
+   "rd": 31,
+   "rs1": 31,
+   "rs2": 31
+  }
+ },
+ {
+  "assembly": "SUB x0, x0, x0",
+  "word": "0x40000033",
+  "expected": {
+   "mnemonic": "SUB",
+   "format": "R",
+   "rd": 0,
+   "rs1": 0,
+   "rs2": 0
+  }
+ },
+ {
+  "assembly": "ADDI x1, x0, 5",
+  "word": "0x00500093",
+  "expected": {
+   "mnemonic": "ADDI",
+   "format": "I",
+   "rd": 1,
+   "rs1": 0,
+   "imm": 5
+  }
+ },
+ {
+  "assembly": "ADDI x2, x2, -1",
+  "word": "0xFFF10113",
+  "expected": {
+   "mnemonic": "ADDI",
+   "format": "I",
+   "rd": 2,
+   "rs1": 2,
+   "imm": -1
+  }
+ },
+ {
+  "assembly": "ADDI x31, x31, 2047",
+  "word": "0x7FFF8F93",
+  "expected": {
+   "mnemonic": "ADDI",
+   "format": "I",
+   "rd": 31,
+   "rs1": 31,
+   "imm": 2047
+  }
+ },
+ {
+  "assembly": "ADDI x5, x6, -2048",
+  "word": "0x80030293",
+  "expected": {
+   "mnemonic": "ADDI",
+   "format": "I",
+   "rd": 5,
+   "rs1": 6,
+   "imm": -2048
+  }
+ },
+ {
+  "assembly": "ANDI x4, x5, 255",
+  "word": "0x0FF2F213",
+  "expected": {
+   "mnemonic": "ANDI",
+   "format": "I",
+   "rd": 4,
+   "rs1": 5,
+   "imm": 255
+  }
+ },
+ {
+  "assembly": "ANDI x4, x5, -1",
+  "word": "0xFFF2F213",
+  "expected": {
+   "mnemonic": "ANDI",
+   "format": "I",
+   "rd": 4,
+   "rs1": 5,
+   "imm": -1
+  }
+ },
+ {
+  "assembly": "ORI x6, x7, -2048",
+  "word": "0x8003E313",
+  "expected": {
+   "mnemonic": "ORI",
+   "format": "I",
+   "rd": 6,
+   "rs1": 7,
+   "imm": -2048
+  }
+ },
+ {
+  "assembly": "ORI x6, x7, 2047",
+  "word": "0x7FF3E313",
+  "expected": {
+   "mnemonic": "ORI",
+   "format": "I",
+   "rd": 6,
+   "rs1": 7,
+   "imm": 2047
+  }
+ },
+ {
+  "assembly": "LW x11, 0(x10)",
+  "word": "0x00052583",
+  "expected": {
+   "mnemonic": "LW",
+   "format": "I",
+   "rd": 11,
+   "rs1": 10,
+   "imm": 0
+  }
+ },
+ {
+  "assembly": "LW x12, -4(x2)",
+  "word": "0xFFC12603",
+  "expected": {
+   "mnemonic": "LW",
+   "format": "I",
+   "rd": 12,
+   "rs1": 2,
+   "imm": -4
+  }
+ },
+ {
+  "assembly": "LW x14, 12(x10)",
+  "word": "0x00C52703",
+  "expected": {
+   "mnemonic": "LW",
+   "format": "I",
+   "rd": 14,
+   "rs1": 10,
+   "imm": 12
+  }
+ },
+ {
+  "assembly": "JALR x1, 8(x5)",
+  "word": "0x008280E7",
+  "expected": {
+   "mnemonic": "JALR",
+   "format": "I",
+   "rd": 1,
+   "rs1": 5,
+   "imm": 8
+  }
+ },
+ {
+  "assembly": "JALR x0, 0(x1)",
+  "word": "0x00008067",
+  "expected": {
+   "mnemonic": "JALR",
+   "format": "I",
+   "rd": 0,
+   "rs1": 1,
+   "imm": 0
+  }
+ },
+ {
+  "assembly": "JALR x1, -2048(x5)",
+  "word": "0x800280E7",
+  "expected": {
+   "mnemonic": "JALR",
+   "format": "I",
+   "rd": 1,
+   "rs1": 5,
+   "imm": -2048
+  }
+ },
+ {
+  "assembly": "SW x12, 4(x10)",
+  "word": "0x00C52223",
+  "expected": {
+   "mnemonic": "SW",
+   "format": "S",
+   "rs1": 10,
+   "rs2": 12,
+   "imm": 4
+  }
+ },
+ {
+  "assembly": "SW x5, -2048(x6)",
+  "word": "0x80532023",
+  "expected": {
+   "mnemonic": "SW",
+   "format": "S",
+   "rs1": 6,
+   "rs2": 5,
+   "imm": -2048
+  }
+ },
+ {
+  "assembly": "SW x5, 2047(x6)",
+  "word": "0x7E532FA3",
+  "expected": {
+   "mnemonic": "SW",
+   "format": "S",
+   "rs1": 6,
+   "rs2": 5,
+   "imm": 2047
+  }
+ },
+ {
+  "assembly": "SW x13, 8(x10)",
+  "word": "0x00D52423",
+  "expected": {
+   "mnemonic": "SW",
+   "format": "S",
+   "rs1": 10,
+   "rs2": 13,
+   "imm": 8
+  }
+ },
+ {
+  "assembly": "BEQ x1, x2, 8",
+  "word": "0x00208463",
+  "expected": {
+   "mnemonic": "BEQ",
+   "format": "B",
+   "rs1": 1,
+   "rs2": 2,
+   "imm": 8
+  }
+ },
+ {
+  "assembly": "BNE x3, x4, -8",
+  "word": "0xFE419CE3",
+  "expected": {
+   "mnemonic": "BNE",
+   "format": "B",
+   "rs1": 3,
+   "rs2": 4,
+   "imm": -8
+  }
+ },
+ {
+  "assembly": "BLT x5, x6, 4092",
+  "word": "0x7E62CEE3",
+  "expected": {
+   "mnemonic": "BLT",
+   "format": "B",
+   "rs1": 5,
+   "rs2": 6,
+   "imm": 4092
+  }
+ },
+ {
+  "assembly": "BEQ x0, x0, -4096",
+  "word": "0x80000063",
+  "expected": {
+   "mnemonic": "BEQ",
+   "format": "B",
+   "rs1": 0,
+   "rs2": 0,
+   "imm": -4096
+  }
+ },
+ {
+  "assembly": "BLT x1, x2, 0",
+  "word": "0x0020C063",
+  "expected": {
+   "mnemonic": "BLT",
+   "format": "B",
+   "rs1": 1,
+   "rs2": 2,
+   "imm": 0
+  }
+ },
+ {
+  "assembly": "BNE x31, x30, 2048",
+  "word": "0x01EF90E3",
+  "expected": {
+   "mnemonic": "BNE",
+   "format": "B",
+   "rs1": 31,
+   "rs2": 30,
+   "imm": 2048
+  }
+ },
+ {
+  "assembly": "JAL x1, 2048",
+  "word": "0x001000EF",
+  "expected": {
+   "mnemonic": "JAL",
+   "format": "J",
+   "rd": 1,
+   "imm": 2048
+  }
+ },
+ {
+  "assembly": "JAL x0, -1048576",
+  "word": "0x8000006F",
+  "expected": {
+   "mnemonic": "JAL",
+   "format": "J",
+   "rd": 0,
+   "imm": -1048576
+  }
+ },
+ {
+  "assembly": "JAL x0, 1048572",
+  "word": "0x7FDFF06F",
+  "expected": {
+   "mnemonic": "JAL",
+   "format": "J",
+   "rd": 0,
+   "imm": 1048572
+  }
+ },
+ {
+  "assembly": "JAL x0, 0",
+  "word": "0x0000006F",
+  "expected": {
+   "mnemonic": "JAL",
+   "format": "J",
+   "rd": 0,
+   "imm": 0
+  }
+ },
+ {
+  "assembly": "JAL x1, -4",
+  "word": "0xFFDFF0EF",
+  "expected": {
+   "mnemonic": "JAL",
+   "format": "J",
+   "rd": 1,
+   "imm": -4
+  }
+ },
+ {
+  "assembly": "LUI x10, 0xFFFF0",
+  "word": "0xFFFF0537",
+  "expected": {
+   "mnemonic": "LUI",
+   "format": "U",
+   "rd": 10,
+   "imm": 1048560
+  }
+ },
+ {
+  "assembly": "LUI x1, 0x0",
+  "word": "0x000000B7",
+  "expected": {
+   "mnemonic": "LUI",
+   "format": "U",
+   "rd": 1,
+   "imm": 0
+  }
+ },
+ {
+  "assembly": "LUI x31, 0xFFFFF",
+  "word": "0xFFFFFFB7",
+  "expected": {
+   "mnemonic": "LUI",
+   "format": "U",
+   "rd": 31,
+   "imm": 1048575
+  }
+ },
+ {
+  "assembly": "LUI x5, 0x1",
+  "word": "0x000012B7",
+  "expected": {
+   "mnemonic": "LUI",
+   "format": "U",
+   "rd": 5,
+   "imm": 1
+  }
+ }
+]

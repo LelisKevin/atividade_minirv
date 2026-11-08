@@ -50,6 +50,9 @@ class CPU:
             return None
         word = self.imem.read_word(self.pc)
         d = decode(word)
+        if d["mnemonic"] not in ("ADD", "ADDI"):
+            raise ValueError(f"instrução decodificada, mas ainda não executada pela CPU: {d['mnemonic']} "
+                             f"(pc {hex32(self.pc)}); o caminho de dados completo é de outra etapa")
         written = {}
         if d["mnemonic"] == "ADD":
             read = {f"x{d['rs1']}": self.regs.read(d["rs1"]), f"x{d['rs2']}": self.regs.read(d["rs2"])}
