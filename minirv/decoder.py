@@ -1,6 +1,6 @@
 """Decodificador (Semana 01): reconhece ADD e ADDI. Será generalizado na Semana 07."""
 
-MASK32 = 0xFFFFFFFF
+from minirv.word32 import MASK32
 
 
 def decode(word):

@@ -19,3 +19,11 @@ Legenda: **Testado e aprovado** · **Implementado** (sem teste automatizável) �
 - Implementado: `orcamento-de-desempenho.md` (11 seções, números gerados a partir do JSON), `ADR-002`, `benchmarks/baseline/README.md`.
 - Pendente — ação sua: seção 10 do relatório (contribuição de cada integrante); reexecutar o benchmark na máquina da dupla e versionar o resultado; Issue, PR revisada e tag `s02` no GitHub.
 - Premissas (não são medições): CPI = 1,0 e clock = 100 MHz do modelo.
+
+## Semana 3 — Representação de 32 bits (branch `entrega/semana-03-word32`)
+
+- Testado e aprovado: `minirv/word32.py` (normalizar, unsigned, signed, hex, binário, extensão de sinal, soma com overflow). 60 testes, 60 aprovados (27 novos).
+- Modificados: `registers.py`, `alu.py`, `cpu.py`, `decoder.py`, `trace.py` passaram a reutilizar `word32` (sem máscara duplicada). Testes das semanas 1 e 2 seguem passando.
+- Implementado: relatório da Semana 03 (tabela de casos-limite gerada pelo módulo), `ADR-001`, pastas `workloads/control/` e `evidencias/`.
+- Conflitos entre documentos resolvidos no ADR-001 (status **Proposto**: a dupla confirma): `src/` × `minirv/`, nome do repositório, organização da memória (Semana 06 a cita, mas a Semana 01 não a registra).
+- Pendente — ação sua: nomes/data/revisor no relatório; confirmar o ADR-001; PR revisada e tag `s03`.

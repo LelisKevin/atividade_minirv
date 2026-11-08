@@ -6,8 +6,7 @@ from minirv.alu import execute
 from minirv.decoder import decode, format_assembly
 from minirv.registers import RegisterFile
 from minirv.trace import Trace, hex32
-
-MASK32 = 0xFFFFFFFF
+from minirv.word32 import MASK32, normalizar32
 
 
 def load_hex(path):
@@ -54,12 +53,12 @@ class CPU:
             result = execute("ADD", self.regs.read(d["rs1"]), self.regs.read(d["rs2"]))
         else:  # ADDI
             read = {f"x{d['rs1']}": self.regs.read(d["rs1"])}
-            result = execute("ADD", self.regs.read(d["rs1"]), d["imm"] & MASK32)
+            result = execute("ADD", self.regs.read(d["rs1"]), normalizar32(d["imm"]))
         self.regs.write(d["rd"], result)
         if d["rd"] != 0:
             written[f"x{d['rd']}"] = self.regs.read(d["rd"])
         pc_before = self.pc
-        self.pc = (self.pc + 4) & MASK32
+        self.pc = normalizar32(self.pc + 4)
         record = {
             "pc": hex32(pc_before),
             "instruction": format_assembly(d),

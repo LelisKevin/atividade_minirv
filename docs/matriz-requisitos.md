@@ -21,12 +21,12 @@ Status: **Testado e aprovado** (coberto por testes automatizados que passaram) �
 | R14 | 2 | ADR-002 (métricas e limites) | HT2 §9 | docs/adr/ADR-002-metricas-e-limites.md | Implementado | Documentos preenchidos com valores medidos; seção 10 (contribuições) deixada para a dupla |
 | R15 | 2 | Testes do coletor de métricas (3 repetições, campos numéricos não negativos) | HT2 §10 | tests/test_baseline.py | Testado e aprovado | 33 testes passando; resultados brutos de 3 execuções em benchmarks/baseline/ |
 | R16 | 2 | Issue, branch, PR revisada e tag s02 | HT2 §11-12 | GitHub | Pendente — ação sua | Issue, PR revisada e tag s02 no GitHub |
-| R17 | 3 | Estrutura de pastas: src(→minirv)/tests/workloads/control/benchmarks/docs/adr/docs/semanas/evidencias | LAB3 §4 | Árvore do repositório | Pendente |  |
-| R18 | 3 | README básico (dupla, objetivo, linguagem, comandos) | LAB3 §4 | README.md | Pendente |  |
-| R19 | 3 | Módulo word32: normalizar, unsigned, signed, hex, binário, extensão de sinal, soma32 | LAB3 §4-5 | minirv/word32.py | Pendente |  |
-| R20 | 3 | Testes dos casos-limite (0, -1, 2^31-1, -2^31, 0xFFFFFFFF+1, 0x2A) | LAB3 §6 | tests/test_word32.py | Pendente |  |
-| R21 | 3 | Relatório da Semana 03 (máscara, overflow, tabela de casos-limite) | LAB3 §4 | docs/semanas/Semana-03/relatorio-semana-03.md | Pendente |  |
-| R22 | 3 | Branch, commit, PR revisada e tag s03 | LAB3 §4 | GitHub | Pendente |  |
+| R17 | 3 | Estrutura de pastas: src(→minirv)/tests/workloads/control/benchmarks/docs/adr/docs/semanas/evidencias | LAB3 §4 | Árvore do repositório | Implementado | Pastas criadas (minirv/ no lugar de src/, ver ADR-001); README atualizado |
+| R18 | 3 | README básico (dupla, objetivo, linguagem, comandos) | LAB3 §4 | README.md | Implementado | Pastas criadas (minirv/ no lugar de src/, ver ADR-001); README atualizado |
+| R19 | 3 | Módulo word32: normalizar, unsigned, signed, hex, binário, extensão de sinal, soma32 | LAB3 §4-5 | minirv/word32.py | Testado e aprovado | 27 testes novos em tests/test_word32.py; suíte: 60 aprovados |
+| R20 | 3 | Testes dos casos-limite (0, -1, 2^31-1, -2^31, 0xFFFFFFFF+1, 0x2A) | LAB3 §6 | tests/test_word32.py | Testado e aprovado | 27 testes novos em tests/test_word32.py; suíte: 60 aprovados |
+| R21 | 3 | Relatório da Semana 03 (máscara, overflow, tabela de casos-limite) | LAB3 §4 | docs/semanas/Semana-03/relatorio-semana-03.md | Implementado | Tabela de casos-limite gerada pelo próprio módulo; nomes/data pendentes |
+| R22 | 3 | Branch, commit, PR revisada e tag s03 | LAB3 §4 | GitHub | Pendente — ação sua | PR revisada e tag s03 no GitHub |
 | R23 | 4 | Portas AND/OR/NOT/XOR com validação + tabelas-verdade + derivação SOP do XOR | S4 §4 | minirv/combinacional/gates.py, docs/logica/tabelas-verdade.md | Pendente |  |
 | R24 | 4 | Multiplexador 2:1 (sel inválido gera erro) | S4 §5 | minirv/combinacional/mux.py | Pendente |  |
 | R25 | 4 | Decodificador 2→4 (uma e somente uma saída ativa) | S4 §6 | minirv/combinacional/decoder.py | Pendente |  |
@@ -72,6 +72,6 @@ Status: **Testado e aprovado** (coberto por testes automatizados que passaram) �
 | R65 | 7 | Suíte completa sem regressões, PR revisada e tag s07 | S7 P13-14 | GitHub | Pendente |  |
 | R66 | 8 | LACUNA: documento da Semana 8 não fornecido (a Semana 07 prevê montador + execução de Assembly) | S7 (intro) | Decisão pendente do usuário | Pendente |  |
 | R67 | 8 | Consolidação: suíte completa, matriz, documentação e versão definitiva | Roteiro do usuário | Esta matriz, README, PROJECT_PROGRESS.md | Pendente |  |
-| C01 | todas | Palavra de 32 bits; x0-x31; x0 imutável; PC de 32 bits; memória endereçada por byte | S5, S7 | word32, registers, pc, data_memory | Pendente |  |
+| C01 | todas | Palavra de 32 bits; x0-x31; x0 imutável; PC de 32 bits; memória endereçada por byte | S5, S7 | word32, registers, pc, data_memory | Testado e aprovado | word32 (32 bits); registers: x0 imutável; demais itens verificados nas semanas 5 a 7 |
 | C02 | todas | Componentes existentes reutilizados, sem duplicação | S7 §2 | Revisão de código (decoder único, ALU única) | Pendente |  |
 | C03 | todas | Suíte das semanas anteriores continua passando a cada semana | S5, S6, S7 | pytest -q por semana | Pendente |  |

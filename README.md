@@ -47,11 +47,17 @@ python -m minirv.cpu programs/soma.hex -o trace.json
 ## Estrutura
 
 ```
-minirv/        pacote do simulador (registers, alu, decoder, cpu, trace)
+minirv/        pacote do simulador (word32, registers, alu, decoder, cpu, trace)
 programs/      programas em hexadecimal (soma.hex) e Assembly de referência (soma.s)
 tests/         testes automatizados (pytest)
-docs/          documentação (arquitetura e relatórios por semana)
+scripts/       coletor de métricas de desempenho
+benchmarks/    linha de base de desempenho (entrada, configuração, resultados brutos)
+workloads/     carga de trabalho de controle (ver docs/semanas/Semana-07)
+docs/          documentação: arquitetura, ADRs e relatórios por semana
+evidencias/    evidências externas ao código (exportações dos simuladores, capturas)
 ```
+
+Decisões de organização (pasta `minirv/` em vez de `src/`, memória): [`docs/adr/ADR-001`](docs/adr/ADR-001-organizacao-do-repositorio-e-da-memoria.md).
 
 Diagrama de blocos: [`docs/arquitetura.md`](docs/arquitetura.md).
 

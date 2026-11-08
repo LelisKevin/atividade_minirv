@@ -2,9 +2,7 @@
 import json
 from pathlib import Path
 
-
-def hex32(value):
-    return f"0x{value & 0xFFFFFFFF:08X}"
+from minirv.word32 import para_hex32 as hex32  # noqa: F401  (reexportado para os demais módulos)
 
 
 class Trace:
