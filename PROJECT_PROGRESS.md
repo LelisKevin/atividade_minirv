@@ -27,3 +27,10 @@ Legenda: **Testado e aprovado** · **Implementado** (sem teste automatizável) �
 - Implementado: relatório da Semana 03 (tabela de casos-limite gerada pelo módulo), `ADR-001`, pastas `workloads/control/` e `evidencias/`.
 - Conflitos entre documentos resolvidos no ADR-001 (status **Proposto**: a dupla confirma): `src/` × `minirv/`, nome do repositório, organização da memória (Semana 06 a cita, mas a Semana 01 não a registra).
 - Pendente — ação sua: nomes/data/revisor no relatório; confirmar o ADR-001; PR revisada e tag `s03`.
+
+## Semana 4 — Lógica combinacional (branch `entrega/semana-04-logica-digital`)
+
+- Testado e aprovado: portas AND/OR/NOT/XOR (+ XOR por soma de produtos), MUX 2:1, decoder 2→4, `decode_control` (R, I, LOAD, STORE, BRANCH). 112 testes, 112 aprovados (52 novos). Os testes comparam o código com as tabelas dos `.md`.
+- Implementado: `docs/logica/tabelas-verdade.md`, `docs/logica/sinais-controle.md`, relatório da Semana 04, diagrama atualizado (blocos combinacionais em azul).
+- Decisão: validação estrita de tipo (`True` e `1.0` são rejeitados); teste do decoder 2→4 chama-se `test_decoder2to4.py` para não colidir com `test_decoder.py`.
+- Pendente — ação sua: nomes/revisor no relatório; PR revisada e tag `s04` no GitHub após o merge.

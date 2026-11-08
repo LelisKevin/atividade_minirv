@@ -27,15 +27,15 @@ Status: **Testado e aprovado** (coberto por testes automatizados que passaram) �
 | R20 | 3 | Testes dos casos-limite (0, -1, 2^31-1, -2^31, 0xFFFFFFFF+1, 0x2A) | LAB3 §6 | tests/test_word32.py | Testado e aprovado | 27 testes novos em tests/test_word32.py; suíte: 60 aprovados |
 | R21 | 3 | Relatório da Semana 03 (máscara, overflow, tabela de casos-limite) | LAB3 §4 | docs/semanas/Semana-03/relatorio-semana-03.md | Implementado | Tabela de casos-limite gerada pelo próprio módulo; nomes/data pendentes |
 | R22 | 3 | Branch, commit, PR revisada e tag s03 | LAB3 §4 | GitHub | Pendente — ação sua | PR revisada e tag s03 no GitHub |
-| R23 | 4 | Portas AND/OR/NOT/XOR com validação + tabelas-verdade + derivação SOP do XOR | S4 §4 | minirv/combinacional/gates.py, docs/logica/tabelas-verdade.md | Pendente |  |
-| R24 | 4 | Multiplexador 2:1 (sel inválido gera erro) | S4 §5 | minirv/combinacional/mux.py | Pendente |  |
-| R25 | 4 | Decodificador 2→4 (uma e somente uma saída ativa) | S4 §6 | minirv/combinacional/decoder.py | Pendente |  |
-| R26 | 4 | decode_control(opcode) para R, I, LOAD, STORE, BRANCH; opcode inválido gera erro | S4 §7 | minirv/combinacional/control.py | Pendente |  |
-| R27 | 4 | Testes automatizados com entrada inválida em cada bloco que valida | S4 §8 | tests/test_{gates,mux,decoder,control}.py | Pendente |  |
-| R28 | 4 | docs/logica/tabelas-verdade.md e sinais-controle.md | S4 §9 | docs/logica/* | Pendente |  |
-| R29 | 4 | Relatório da Semana 04 | S4 §9 | docs/semanas/Semana-04/relatorio-semana-04.md | Pendente |  |
-| R30 | 4 | Diagrama arquitetural marcando blocos combinacionais | S4 §9 | docs/arquitetura.md | Pendente |  |
-| R31 | 4 | PR revisada e tag s04 | S4 §10-12 | GitHub | Pendente |  |
+| R23 | 4 | Portas AND/OR/NOT/XOR com validação + tabelas-verdade + derivação SOP do XOR | S4 §4 | minirv/combinacional/gates.py, docs/logica/tabelas-verdade.md | Testado e aprovado | 52 testes novos; suíte: 112 aprovados; tabelas .md verificadas por teste |
+| R24 | 4 | Multiplexador 2:1 (sel inválido gera erro) | S4 §5 | minirv/combinacional/mux.py | Testado e aprovado | 52 testes novos; suíte: 112 aprovados; tabelas .md verificadas por teste |
+| R25 | 4 | Decodificador 2→4 (uma e somente uma saída ativa) | S4 §6 | minirv/combinacional/decoder.py | Testado e aprovado | 52 testes novos; suíte: 112 aprovados; tabelas .md verificadas por teste |
+| R26 | 4 | decode_control(opcode) para R, I, LOAD, STORE, BRANCH; opcode inválido gera erro | S4 §7 | minirv/combinacional/control.py | Testado e aprovado | 52 testes novos; suíte: 112 aprovados; tabelas .md verificadas por teste |
+| R27 | 4 | Testes automatizados com entrada inválida em cada bloco que valida | S4 §8 | tests/test_{gates,mux,decoder,control}.py | Testado e aprovado | 52 testes novos; suíte: 112 aprovados; tabelas .md verificadas por teste |
+| R28 | 4 | docs/logica/tabelas-verdade.md e sinais-controle.md | S4 §9 | docs/logica/* | Implementado | docs/logica/*, relatório e diagrama com blocos combinacionais marcados |
+| R29 | 4 | Relatório da Semana 04 | S4 §9 | docs/semanas/Semana-04/relatorio-semana-04.md | Implementado | docs/logica/*, relatório e diagrama com blocos combinacionais marcados |
+| R30 | 4 | Diagrama arquitetural marcando blocos combinacionais | S4 §9 | docs/arquitetura.md | Implementado | docs/logica/*, relatório e diagrama com blocos combinacionais marcados |
+| R31 | 4 | PR revisada e tag s04 | S4 §10-12 | GitHub | Pendente — ação sua | PR revisada e tag s04 no GitHub (só após merge de verdade) |
 | R32 | 5 | simulacao-sequencial.md: ≥5 experimentos com previsão e resultado no simulador | S5 §3 | docs/semanas/Semana-05/simulacao-sequencial.md | Pendente |  |
 | R33 | 5 | ALU de 32 bits: ADD, SUB, AND, OR, XOR, SLT, SLL, SRL (normal, limite, negativos, overflow) | S5 P4 | minirv/alu.py, tests/test_alu.py | Pendente |  |
 | R34 | 5 | Banco de 32 registradores: read2, write com enable, x0 imutável, índice inválido | S5 P5 | minirv/registers.py, tests/test_registers.py | Pendente |  |
