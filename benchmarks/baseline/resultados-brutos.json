@@ -1,0 +1,44 @@
+[
+  {
+    "repeticao": 1,
+    "tempo_decorrido_s": 0.1512232180000126,
+    "memoria_pico_bytes": 4794244,
+    "amostras": 1000,
+    "soma_temperaturas": 24715,
+    "tamanho_rastro_bytes": 407102,
+    "arquitetura": {
+      "instrucoes_executadas": 2000,
+      "cpi_modelado": 1.0,
+      "ciclos_simulados": 2000.0,
+      "tempo_modelado_s": 2e-05
+    }
+  },
+  {
+    "repeticao": 2,
+    "tempo_decorrido_s": 0.1426988730000005,
+    "memoria_pico_bytes": 4789236,
+    "amostras": 1000,
+    "soma_temperaturas": 24715,
+    "tamanho_rastro_bytes": 407102,
+    "arquitetura": {
+      "instrucoes_executadas": 2000,
+      "cpi_modelado": 1.0,
+      "ciclos_simulados": 2000.0,
+      "tempo_modelado_s": 2e-05
+    }
+  },
+  {
+    "repeticao": 3,
+    "tempo_decorrido_s": 0.13536837500001297,
+    "memoria_pico_bytes": 4789228,
+    "amostras": 1000,
+    "soma_temperaturas": 24715,
+    "tamanho_rastro_bytes": 407102,
+    "arquitetura": {
+      "instrucoes_executadas": 2000,
+      "cpi_modelado": 1.0,
+      "ciclos_simulados": 2000.0,
+      "tempo_modelado_s": 2e-05
+    }
+  }
+]

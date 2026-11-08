@@ -16,11 +16,11 @@ Status: **Testado e aprovado** (coberto por testes automatizados que passaram) �
 | R09 | 1 | Testes de ADD (ULA) e da invariante x0=0 | HT1 §9 | tests/test_alu.py, tests/test_registers.py | Testado e aprovado | 26 testes passando (pytest -q) na Semana 1 |
 | R10 | 1 | Execução passo a passo e contínua | HT1 §2 | CPU.step/run e flag --step | Testado e aprovado | step()/run() testados; a flag --step (interativa) foi escrita mas não é coberta por teste automático |
 | R11 | 1 | PR revisada pelo colega e tag s01 | HT1 §9 | PR + tag no GitHub | Pendente — ação sua | Exige GitHub/colega/professora |
-| R12 | 2 | benchmarks/baseline/ com comando, entrada, configuração e resultados brutos (3 execuções) | HT2 §2-3 | benchmarks/baseline/* | Pendente |  |
-| R13 | 2 | orcamento-de-desempenho.md com 11 seções, fórmulas e separação arquitetura × hospedeiro | HT2 §4-8 | docs/semanas/Semana-02/orcamento-de-desempenho.md | Pendente |  |
-| R14 | 2 | ADR-002 (métricas e limites) | HT2 §9 | docs/adr/ADR-002-metricas-e-limites.md | Pendente |  |
-| R15 | 2 | Testes do coletor de métricas (3 repetições, campos numéricos não negativos) | HT2 §10 | tests/test_baseline.py | Pendente |  |
-| R16 | 2 | Issue, branch, PR revisada e tag s02 | HT2 §11-12 | GitHub | Pendente |  |
+| R12 | 2 | benchmarks/baseline/ com comando, entrada, configuração e resultados brutos (3 execuções) | HT2 §2-3 | benchmarks/baseline/* | Testado e aprovado | 33 testes passando; resultados brutos de 3 execuções em benchmarks/baseline/ |
+| R13 | 2 | orcamento-de-desempenho.md com 11 seções, fórmulas e separação arquitetura × hospedeiro | HT2 §4-8 | docs/semanas/Semana-02/orcamento-de-desempenho.md | Implementado | Documentos preenchidos com valores medidos; seção 10 (contribuições) deixada para a dupla |
+| R14 | 2 | ADR-002 (métricas e limites) | HT2 §9 | docs/adr/ADR-002-metricas-e-limites.md | Implementado | Documentos preenchidos com valores medidos; seção 10 (contribuições) deixada para a dupla |
+| R15 | 2 | Testes do coletor de métricas (3 repetições, campos numéricos não negativos) | HT2 §10 | tests/test_baseline.py | Testado e aprovado | 33 testes passando; resultados brutos de 3 execuções em benchmarks/baseline/ |
+| R16 | 2 | Issue, branch, PR revisada e tag s02 | HT2 §11-12 | GitHub | Pendente — ação sua | Issue, PR revisada e tag s02 no GitHub |
 | R17 | 3 | Estrutura de pastas: src(→minirv)/tests/workloads/control/benchmarks/docs/adr/docs/semanas/evidencias | LAB3 §4 | Árvore do repositório | Pendente |  |
 | R18 | 3 | README básico (dupla, objetivo, linguagem, comandos) | LAB3 §4 | README.md | Pendente |  |
 | R19 | 3 | Módulo word32: normalizar, unsigned, signed, hex, binário, extensão de sinal, soma32 | LAB3 §4-5 | minirv/word32.py | Pendente |  |

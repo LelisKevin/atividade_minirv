@@ -1,0 +1,18 @@
+{
+  "comando": "python scripts/measure_baseline.py",
+  "entrada": "benchmarks/baseline/entrada-temperaturas.csv",
+  "amostras": 1000,
+  "repeticoes": 3,
+  "modelo_arquitetural": {
+    "cpi_modelado": 1.0,
+    "clock_modelado_hz": 100000000,
+    "nota": "Premissa didática: modelo ideal de 1 ciclo por instrução. Será revisada quando o ciclo de 5 estados (Semana 06) for medido."
+  },
+  "orcamento": {
+    "repeticoes_minimas": 3,
+    "tempo_medio_max_s": 2.0,
+    "memoria_pico_max_bytes": 157286400,
+    "rastro_max_bytes": 5242880,
+    "regressao_relevante_percentual": 10
+  }
+}

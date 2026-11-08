@@ -1,0 +1,7 @@
+{
+  "sistema": "Linux-6.18.44-fc-v233-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "implementacao": "CPython",
+  "processador": "x86_64",
+  "nota": "Medição feita no ambiente indicado. Reexecute na máquina da dupla para o relatório final."
+}

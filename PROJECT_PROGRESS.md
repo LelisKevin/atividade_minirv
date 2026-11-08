@@ -11,3 +11,11 @@ Legenda: **Testado e aprovado** · **Implementado** (sem teste automatizável) �
 - Implementado: README, diagrama de arquitetura (Mermaid), `.gitignore`, `requirements.txt`, `pytest.ini`.
 - Pendente — ação sua: criar repositório privado e adicionar a professora; abrir a Issue S01; PR revisada pelo colega; tag `s01` no GitHub; preencher nomes no README.
 - Observação: o programa do guia usa `addi a7` + `ecall` para sair; `ecall` não pertence ao subconjunto, então `soma.hex` tem só as 3 instruções e a CPU encerra quando o PC passa do fim. O `.s` completo fica em `programs/soma.s` para o RARS.
+
+## Semana 2 — Desempenho e orçamento (branch `entrega/semana-02-desempenho`)
+
+- Testado e aprovado: coletor `scripts/measure_baseline.py` (3 repetições, tempo, memória de pico, tamanho do rastro, métricas da arquitetura separadas das do hospedeiro, verificação de orçamento). Suíte: 33 testes, 33 aprovados.
+- Medido (contêiner Linux, Python 3.12.3): média de 143,1 ms, pico de 4,57 MiB, rastro de 0,39 MiB, 2.000 instruções. Orçamento: dentro dos limites.
+- Implementado: `orcamento-de-desempenho.md` (11 seções, números gerados a partir do JSON), `ADR-002`, `benchmarks/baseline/README.md`.
+- Pendente — ação sua: seção 10 do relatório (contribuição de cada integrante); reexecutar o benchmark na máquina da dupla e versionar o resultado; Issue, PR revisada e tag `s02` no GitHub.
+- Premissas (não são medições): CPI = 1,0 e clock = 100 MHz do modelo.
