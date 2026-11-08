@@ -115,3 +115,24 @@ _Pendente: a dupla deve preencher quem fez o quê nesta semana e quem revisou a 
 - Semana 03: módulo `word32` (representação de 32 bits), que passa a ser reutilizado por registradores e ULA.
 - Quando o RV32I existir (Semana 07), o benchmark deve passar a usar o codificador oficial
   em vez dos dois montadores de palavra locais de `scripts/measure_baseline.py`.
+
+## 12. Atualização da Semana 08: regressão após o decodificador da Semana 07
+
+Regra do orçamento (seção 8): aumento superior a 10% sem justificativa é regressão relevante.
+
+**Medição.** Em 6 repetições por versão, na mesma máquina e no mesmo momento (`benchmarks/baseline/comparacao-s06-s08.json`):
+tag `s06` (decodificador antigo) com média de 326,5 ms; `main` (decodificador novo) com média de 463,6 ms, ou seja,
+**+42,0%**. A memória de pico ficou praticamente igual (4.678–4.682 KiB contra 4.685 KiB).
+
+**Causa.** O decodificador da Semana 07 deixou de ser um `if` para ADD/ADDI e passou a consultar a especificação do
+contrato (19 instruções), extrair o imediato por formato e validar faixa e alinhamento a cada instrução decodificada.
+A hipótese inicial de que a montagem do programa com `encode()` fosse a causa foi **medida e descartada**
+(≈ 6 ms de ~50 ms sem `tracemalloc`).
+
+**Justificativa e decisão.** A regressão é aceita: o custo extra é o preço de decodificar o subconjunto completo com
+validação (requisito da Semana 07), o resultado continua muito abaixo do limite de 2 s e a memória não mudou.
+Não foi feita otimização (não é objetivo do projeto).
+
+**Cuidado ao comparar.** Os 135–151 ms da seção 7 foram medidos em outro momento; nessa mesma máquina, hoje, o código
+da `s06` leva 280–410 ms. Ou seja, a variação entre momentos (2 a 3 vezes) é maior que a regressão do decodificador.
+Compare sempre versões lado a lado e reexecute `python scripts/measure_baseline.py` na máquina da dupla.

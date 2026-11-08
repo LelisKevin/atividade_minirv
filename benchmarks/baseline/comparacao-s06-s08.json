@@ -1,0 +1,16 @@
+{
+  "objetivo": "Verificar a regressão após o decodificador da Semana 07 (generalizado e validado pelo contrato).",
+  "metodo": "Mesmo comando (executar() de scripts/measure_baseline.py, 1.000 amostras, 3 repetições, tracemalloc ligado), mesma máquina e mesmo momento; duas rodadas por versão (git worktree da tag s06 e da main).",
+  "ambiente": "contêiner Linux de desenvolvimento, Python 3.12.3",
+  "observacao_importante": "A máquina estava 2 a 3 vezes mais lenta que na medição original da Semana 02 (135-151 ms): por isso só a comparação lado a lado é válida.",
+  "s06_decoder_antigo": {
+    "rodada_1": {"tempo_ms": [408.0, 341.4, 276.9], "pico_kib": 4678},
+    "rodada_2": {"tempo_ms": [286.2, 330.5, 315.9], "pico_kib": 4682}
+  },
+  "main_decoder_novo": {
+    "rodada_1": {"tempo_ms": [536.2, 512.2, 401.9], "pico_kib": 4685},
+    "rodada_2": {"tempo_ms": [497.0, 416.9, 417.4], "pico_kib": 4685}
+  },
+  "medias_ms": {"s06": 326.5, "main": 463.6},
+  "variacao_percentual": 42.0
+}

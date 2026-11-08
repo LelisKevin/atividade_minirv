@@ -38,11 +38,17 @@ controle, MUX e ULA); laranja = bloco com **estado** (PC, registradores e memór
 | --- | --- | --- | --- |
 | Palavra de 32 bits | — | `minirv/word32.py` | 03 |
 | Portas, MUX, decoder 2→4, controle por classe | combinacional | `minirv/combinacional/` | 04 |
-| Decodificador de instruções | combinacional | `minirv/decoder.py` | 01 (generalizado na 07) |
+| Decodificador de instruções (spec do contrato) | combinacional | `minirv/decoder.py`, `minirv/isa.py` | 01, generalizado na 07 |
+| Codificador de instruções | combinacional | `minirv/encoder.py` | 07 |
 | Registradores, PC | sequencial | `minirv/registers.py`, `minirv/pc.py` | 01, 05 |
 | ULA | combinacional | `minirv/alu.py` | 01, 05 |
-| Memórias de instruções e de dados | sequencial | a criar (Semana 06) | 06 |
+| Memória de instruções / de dados | sequencial | `minirv/instruction_memory.py`, `minirv/data_memory.py` | 06 |
+| Ciclo FETCH→WRITEBACK (instruções controladas) | controle | `minirv/executor.py` | 06 |
+| CPU ADD/ADDI com trace por instrução | integração | `minirv/cpu.py` | 01 |
 | Trace | observação | `minirv/trace.py` | 01 |
 
-Estado atual: o PC e a lista de palavras do programa ainda ficam dentro de `cpu.py` e o módulo `pc.py` e as
-memórias ainda não existem; eles entram nas Semanas 05 e 06. O diagrama mostra a arquitetura-alvo.
+## O que ainda não existe
+
+A CPU decodifica as 19 instruções do contrato, mas executa só `ADD` e `ADDI`; o executor da Semana 06 roda
+apenas as três instruções controladas didáticas. O caminho de dados completo e o montador não fazem parte dos
+documentos recebidos (ver `docs/checklist-final.md`).

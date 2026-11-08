@@ -57,3 +57,12 @@ Legenda: **Testado e aprovado** · **Implementado** (sem teste automatizável) �
 - Decisões: offsets de branch/jump múltiplos de 4; SLL/SRL por registrador; E/S em 0xFFFF0000 é premissa da dupla.
 - **Contrato em "candidato a congelamento":** só vira "CONGELADA" depois da PR revisada (guia, Passo 12).
 - Pendente — ação sua: executar o simulador da Semana 07 e salvar `vetores-simulador.json`; revisão cruzada da PR; congelar o contrato; tag `s07`.
+
+## Semana 8 — Consolidação (branch `entrega/semana-08-consolidacao`)
+
+- **Observação:** não existe documento da Semana 8 (foram enviados 7 arquivos). Esta semana seguiu o roteiro do pedido: testes completos, revisão de requisitos, documentação e versão definitiva. Nenhuma funcionalidade nova foi inventada.
+- Testado: clone limpo com venv novo e só `pytest` instalado: 531 aprovados + 1 ignorado (capstone opcional). Comandos do README executados com sucesso (soma, executor, benchmark).
+- Achado e tratado: o decodificador da Semana 07 deixou o benchmark ~42% mais lento (medição lado a lado, mesma máquina). Hipótese inicial (custo do `encode`) foi medida e descartada. Justificado na seção 12 de `orcamento-de-desempenho.md`; dentro do orçamento de 2 s.
+- Implementado: README final, `docs/checklist-final.md`, `docs/entrega-github.md`, `docs/arquitetura.md` atualizado, matriz final.
+- Pendente: ver `docs/checklist-final.md`, seção 3 (13 itens que dependem de GitHub, colega, professora ou simulador web) e seção 4 (decisões abertas).
+- GitHub: **nada foi enviado** (sem credenciais nem URL no ambiente). Branches, merges e tags `s01`–`s08` são locais.
