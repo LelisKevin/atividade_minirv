@@ -36,15 +36,15 @@ Status: **Testado e aprovado** (coberto por testes automatizados que passaram) �
 | R29 | 4 | Relatório da Semana 04 | S4 §9 | docs/semanas/Semana-04/relatorio-semana-04.md | Implementado | docs/logica/*, relatório e diagrama com blocos combinacionais marcados |
 | R30 | 4 | Diagrama arquitetural marcando blocos combinacionais | S4 §9 | docs/arquitetura.md | Implementado | docs/logica/*, relatório e diagrama com blocos combinacionais marcados |
 | R31 | 4 | PR revisada e tag s04 | S4 §10-12 | GitHub | Pendente — ação sua | PR revisada e tag s04 no GitHub (só após merge de verdade) |
-| R32 | 5 | simulacao-sequencial.md: ≥5 experimentos com previsão e resultado no simulador | S5 §3 | docs/semanas/Semana-05/simulacao-sequencial.md | Pendente |  |
-| R33 | 5 | ALU de 32 bits: ADD, SUB, AND, OR, XOR, SLT, SLL, SRL (normal, limite, negativos, overflow) | S5 P4 | minirv/alu.py, tests/test_alu.py | Pendente |  |
-| R34 | 5 | Banco de 32 registradores: read2, write com enable, x0 imutável, índice inválido | S5 P5 | minirv/registers.py, tests/test_registers.py | Pendente |  |
-| R35 | 5 | ProgramCounter: value, advance(+4), jump, reset | S5 P6 | minirv/pc.py, tests/test_pc.py | Pendente |  |
-| R36 | 5 | Testes de comparação e desvio (igualdade e signed) | S5 P7 | tests/test_alu.py | Pendente |  |
-| R37 | 5 | Mapa operação → entrada → saída → sinal | S5 P8 | docs/semanas/Semana-05/mapa-operacoes.md | Pendente |  |
-| R38 | 5 | Sequência de testes leitura→cálculo→escrita (x1=5, x2=7, x3=12) | S5 P9 | tests/test_sequencia.py | Pendente |  |
-| R39 | 5 | Relatório da Semana 05 (invariantes, cobertura, limitações) | S5 P11 | docs/semanas/Semana-05/relatorio-semana-05.md | Pendente |  |
-| R40 | 5 | PR revisada e tag s05 | S5 P12 | GitHub | Pendente |  |
+| R32 | 5 | simulacao-sequencial.md: ≥5 experimentos com previsão e resultado no simulador | S5 §3 | docs/semanas/Semana-05/simulacao-sequencial.md | Pendente — ação sua | Previsões e resultados do projeto preenchidos; resultados do simulador web precisam ser executados e preenchidos por você |
+| R33 | 5 | ALU de 32 bits: ADD, SUB, AND, OR, XOR, SLT, SLL, SRL (normal, limite, negativos, overflow) | S5 P4 | minirv/alu.py, tests/test_alu.py | Testado e aprovado | 92 testes novos; suíte: 204 aprovados |
+| R34 | 5 | Banco de 32 registradores: read2, write com enable, x0 imutável, índice inválido | S5 P5 | minirv/registers.py, tests/test_registers.py | Testado e aprovado | 92 testes novos; suíte: 204 aprovados |
+| R35 | 5 | ProgramCounter: value, advance(+4), jump, reset | S5 P6 | minirv/pc.py, tests/test_pc.py | Testado e aprovado | 92 testes novos; suíte: 204 aprovados |
+| R36 | 5 | Testes de comparação e desvio (igualdade e signed) | S5 P7 | tests/test_alu.py | Testado e aprovado | 92 testes novos; suíte: 204 aprovados |
+| R37 | 5 | Mapa operação → entrada → saída → sinal | S5 P8 | docs/semanas/Semana-05/mapa-operacoes.md | Implementado | Mapa gerado executando os componentes; relatório com invariantes ↔ testes |
+| R38 | 5 | Sequência de testes leitura→cálculo→escrita (x1=5, x2=7, x3=12) | S5 P9 | tests/test_sequencia.py | Testado e aprovado | 92 testes novos; suíte: 204 aprovados |
+| R39 | 5 | Relatório da Semana 05 (invariantes, cobertura, limitações) | S5 P11 | docs/semanas/Semana-05/relatorio-semana-05.md | Implementado | Mapa gerado executando os componentes; relatório com invariantes ↔ testes |
+| R40 | 5 | PR revisada e tag s05 | S5 P12 | GitHub | Pendente — ação sua | PR revisada e tag s05 no GitHub |
 | R41 | 6 | Laboratório da Semana 06 executado e trace-laboratorio salvo | S6 P1 | docs/semanas/Semana-06/trace-laboratorio.json | Pendente |  |
 | R42 | 6 | Memória de instruções (read_word) | S6 P3 | minirv/instruction_memory.py | Pendente |  |
 | R43 | 6 | Memória de dados (read/write word, alinhamento, faixa, erro com endereço e causa) | S6 P3 | minirv/data_memory.py | Pendente |  |
@@ -73,5 +73,5 @@ Status: **Testado e aprovado** (coberto por testes automatizados que passaram) �
 | R66 | 8 | LACUNA: documento da Semana 8 não fornecido (a Semana 07 prevê montador + execução de Assembly) | S7 (intro) | Decisão pendente do usuário | Pendente |  |
 | R67 | 8 | Consolidação: suíte completa, matriz, documentação e versão definitiva | Roteiro do usuário | Esta matriz, README, PROJECT_PROGRESS.md | Pendente |  |
 | C01 | todas | Palavra de 32 bits; x0-x31; x0 imutável; PC de 32 bits; memória endereçada por byte | S5, S7 | word32, registers, pc, data_memory | Testado e aprovado | word32 (32 bits); registers: x0 imutável; demais itens verificados nas semanas 5 a 7 |
-| C02 | todas | Componentes existentes reutilizados, sem duplicação | S7 §2 | Revisão de código (decoder único, ALU única) | Pendente |  |
+| C02 | todas | Componentes existentes reutilizados, sem duplicação | S7 §2 | Revisão de código (decoder único, ALU única) | Implementado | ProgramCounter e word32 reutilizados; CPU usa ALU/PC/registradores únicos (verificado por revisão de código) |
 | C03 | todas | Suíte das semanas anteriores continua passando a cada semana | S5, S6, S7 | pytest -q por semana | Pendente |  |

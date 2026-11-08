@@ -34,3 +34,11 @@ Legenda: **Testado e aprovado** · **Implementado** (sem teste automatizável) �
 - Implementado: `docs/logica/tabelas-verdade.md`, `docs/logica/sinais-controle.md`, relatório da Semana 04, diagrama atualizado (blocos combinacionais em azul).
 - Decisão: validação estrita de tipo (`True` e `1.0` são rejeitados); teste do decoder 2→4 chama-se `test_decoder2to4.py` para não colidir com `test_decoder.py`.
 - Pendente — ação sua: nomes/revisor no relatório; PR revisada e tag `s04` no GitHub após o merge.
+
+## Semana 5 — ALU, registradores e PC (branch `entrega/semana-05-blocos-funcionais`)
+
+- Testado e aprovado: ALU com ADD/SUB/AND/OR/XOR/SLT/SLL/SRL (normal, limites, negativos, overflow), `RegisterFile` com `read2` e `write(enable)`, `ProgramCounter` (avanço, salto validado, reset), desvios por composição (BEQ/BNE/BLT) e sequência x1=5, x2=7, x3=12. 204 testes, 204 aprovados.
+- Modificados: `alu.py`, `registers.py` (ampliados), `cpu.py` (passa a usar `ProgramCounter`).
+- Implementado: `mapa-operacoes.md` (gerado executando os componentes), `relatorio-semana-05.md` (invariantes ↔ testes), `simulacao-sequencial.md`.
+- Pendente — ação sua: **executar o simulador de flip-flops e preencher a coluna "Resultado no simulador da aula"** (5 experimentos); nomes/revisor; PR revisada e tag `s05`.
+- Decisão: deslocamentos SLL/SRL usam só os 5 bits menos significativos de `b` (como no RV32I).

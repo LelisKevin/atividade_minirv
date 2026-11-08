@@ -4,6 +4,7 @@ import sys
 
 from minirv.alu import execute
 from minirv.decoder import decode, format_assembly
+from minirv.pc import ProgramCounter
 from minirv.registers import RegisterFile
 from minirv.trace import Trace, hex32
 from minirv.word32 import MASK32, normalizar32
@@ -31,17 +32,19 @@ class CPU:
     def __init__(self, program):
         self.program = list(program)
         self.regs = RegisterFile()
-        self.pc = 0
+        self._pc = ProgramCounter()
         self.trace = Trace()
         self.halted = False
+
+    @property
+    def pc(self):
+        return self._pc.value()
 
     def step(self):
         """Executa uma instrução. Retorna o registro de trace, ou None se o programa terminou."""
         if self.halted:
             return None
-        index, resto = divmod(self.pc, 4)
-        if resto != 0:
-            raise ValueError(f"PC desalinhado: {hex32(self.pc)}")
+        index = self.pc // 4  # o PC é sempre múltiplo de 4 (ProgramCounter valida)
         if index >= len(self.program):
             self.halted = True  # fim do programa: PC saiu da memória de instruções
             return None
@@ -58,7 +61,7 @@ class CPU:
         if d["rd"] != 0:
             written[f"x{d['rd']}"] = self.regs.read(d["rd"])
         pc_before = self.pc
-        self.pc = normalizar32(self.pc + 4)
+        self._pc.advance()
         record = {
             "pc": hex32(pc_before),
             "instruction": format_assembly(d),
