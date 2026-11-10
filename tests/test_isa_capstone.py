@@ -7,10 +7,10 @@ import json
 import re
 from pathlib import Path
 
-import pytest
+import pytest  # type: ignore[import-not-found]
 
 capstone = pytest.importorskip("capstone")
-from capstone import CS_ARCH_RISCV, CS_MODE_RISCV32, Cs  # noqa: E402
+from capstone import CS_ARCH_RISCV, CS_MODE_RISCV32, Cs  # noqa: E402  # type: ignore[import-not-found]
 
 ABI = ["zero", "ra", "sp", "gp", "tp", "t0", "t1", "t2", "s0", "s1"] + [f"a{i}" for i in range(8)] \
     + [f"s{i}" for i in range(2, 12)] + [f"t{i}" for i in range(3, 7)]
