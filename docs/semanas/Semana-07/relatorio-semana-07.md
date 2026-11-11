@@ -90,8 +90,8 @@ opcode com largura errada, marcadores ausentes) é recusado na leitura.
   não existe segundo decodificador. Os testes das semanas 1 a 6 passam sem alteração.
 - `scripts/measure_baseline.py` deixou de ter montadores locais e usa `encode` (o resultado versionado da Semana 02
   não muda: mesmas palavras).
-- A CPU continua executando só ADD/ADDI; as demais instruções são decodificadas, mas recusadas com erro explícito
-  (o caminho de dados completo não faz parte desta semana).
+- Na etapa da Semana 07, a CPU ainda executava só ADD/ADDI; o suporte de execução às 19 instruções foi concluído
+  posteriormente e está refletido na documentação atual da arquitetura.
 - O programa da Semana 01 usa `ecall`/`a7` para encerrar, o que está fora das 19 instruções; `soma.hex` não o usa.
 
 ## 8. Resultado da suíte

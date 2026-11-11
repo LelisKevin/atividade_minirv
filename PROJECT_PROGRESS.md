@@ -64,9 +64,9 @@ Legenda: **Testado e aprovado** · **Implementado** (sem teste automatizável) �
 - **Observação:** não existe documento da Semana 8 (foram enviados 7 arquivos). Esta semana seguiu o roteiro do pedido: testes completos, revisão de requisitos, documentação e versão definitiva.
 - Implementado: memória de dados com MMIO legível e gravável em `0x80000000` (`io_input`), `0x80000004` (`io_signal`)
   e `0x80000008` (`io_cycles`), com normalização para 32 bits.
-- Implementado: a CPU executa `ADD`, `ADDI`, `LUI`, `LW`, `SW`, `BEQ` e `JAL`; os arquivos Assembly e `.hex` do reatômetro
-  e a interface `python -m minirv.reatometro_app` usam esse subconjunto e o MMIO. Ciclos são medidos como uma
-  instrução por ciclo simulado.
+- Implementado: a CPU executa todas as 19 instruções RV32I v1. Os arquivos Assembly e `.hex` do reatômetro e a
+  interface `python -m minirv.reatometro_app` usam o subconjunto necessário e o MMIO. Ciclos são medidos como
+  uma instrução por ciclo simulado.
 - Validado: teste automatizado de uma rodada do aplicativo, execução do Assembly com polling/ramificação/MMIO
   e suíte completa do projeto.
 - Testado: clone limpo com venv novo e só `pytest` instalado: 531 aprovados + 1 ignorado (capstone opcional). Comandos do README executados com sucesso (soma, executor, benchmark).

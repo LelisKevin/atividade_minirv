@@ -10,7 +10,7 @@ from minirv.instruction_memory import InstructionMemory
 from minirv.pc import ProgramCounter
 from minirv.registers import RegisterFile
 from minirv.trace import Trace, hex32
-from minirv.word32 import MASK32, normalizar32
+from minirv.word32 import MASK32, normalizar32, para_signed32
 
 
 def load_hex(path):
@@ -77,7 +77,8 @@ class CPU:
         word = self.imem.read_word(pc_before)
         d = decode(word)
         mnemonic = d["mnemonic"]
-        supported = ("ADD", "ADDI", "LUI", "LW", "SW", "BEQ", "JAL")
+        supported = ("ADD", "SUB", "SLL", "SLT", "XOR", "SRL", "OR", "AND", "ADDI", "ORI", "ANDI",
+                     "LW", "JALR", "SW", "BEQ", "BNE", "BLT", "JAL", "LUI")
         if mnemonic not in supported:
             raise ValueError(f"instrução decodificada, mas ainda não executada pela CPU: {d['mnemonic']} "
                              f"(pc {hex32(pc_before)}); instrução fora do subconjunto executável atual")
@@ -86,13 +87,14 @@ class CPU:
         read = {}
         next_pc = normalizar32(pc_before + 4)
 
-        if mnemonic == "ADD":
+        if mnemonic in ("ADD", "SUB", "SLL", "SLT", "XOR", "SRL", "OR", "AND"):
             read = {f"x{d['rs1']}": self.regs.read(d["rs1"]), f"x{d['rs2']}": self.regs.read(d["rs2"])}
-            result = execute("ADD", self.regs.read(d["rs1"]), self.regs.read(d["rs2"]))
+            result = execute(mnemonic, read[f"x{d['rs1']}"], read[f"x{d['rs2']}"])
             self.regs.write(d["rd"], result)
-        elif mnemonic == "ADDI":
+        elif mnemonic in ("ADDI", "ORI", "ANDI"):
             read = {f"x{d['rs1']}": self.regs.read(d["rs1"])}
-            result = execute("ADD", self.regs.read(d["rs1"]), normalizar32(d["imm"]))
+            operation = {"ADDI": "ADD", "ORI": "OR", "ANDI": "AND"}[mnemonic]
+            result = execute(operation, read[f"x{d['rs1']}"], normalizar32(d["imm"]))
             self.regs.write(d["rd"], result)
         elif mnemonic == "LUI":
             result = normalizar32(d["imm"] << 12)
@@ -110,11 +112,27 @@ class CPU:
             read = {f"x{d['rs1']}": self.regs.read(d["rs1"]), f"x{d['rs2']}": self.regs.read(d["rs2"])}
             if read[f"x{d['rs1']}"] == read[f"x{d['rs2']}"]:
                 next_pc = normalizar32(pc_before + d["imm"])
+        elif mnemonic == "BNE":
+            read = {f"x{d['rs1']}": self.regs.read(d["rs1"]), f"x{d['rs2']}": self.regs.read(d["rs2"])}
+            if read[f"x{d['rs1']}"] != read[f"x{d['rs2']}"]:
+                next_pc = normalizar32(pc_before + d["imm"])
+        elif mnemonic == "BLT":
+            read = {f"x{d['rs1']}": self.regs.read(d["rs1"]), f"x{d['rs2']}": self.regs.read(d["rs2"])}
+            if para_signed32(read[f"x{d['rs1']}"]) < para_signed32(read[f"x{d['rs2']}"]):
+                next_pc = normalizar32(pc_before + d["imm"])
+        elif mnemonic == "JALR":
+            read = {f"x{d['rs1']}": self.regs.read(d["rs1"])}
+            target = normalizar32(read[f"x{d['rs1']}"] + d["imm"]) & ~1
+            ProgramCounter(target)  # validate before committing the link register
+            self.regs.write(d["rd"], next_pc)
+            next_pc = target
         elif mnemonic == "JAL":
             self.regs.write(d["rd"], next_pc)
             next_pc = normalizar32(pc_before + d["imm"])
 
-        if "rd" in d and d["rd"] != 0 and mnemonic in ("ADD", "ADDI", "LUI", "LW", "JAL"):
+        if "rd" in d and d["rd"] != 0 and mnemonic in (
+                "ADD", "SUB", "SLL", "SLT", "XOR", "SRL", "OR", "AND", "ADDI", "ORI", "ANDI",
+                "LUI", "LW", "JALR", "JAL"):
             written[f"x{d['rd']}"] = self.regs.read(d["rd"])
         if mnemonic == "SW":
             written[f"mem[{address}]"] = self.memory.read_word(address)

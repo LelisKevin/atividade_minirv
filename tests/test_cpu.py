@@ -67,7 +67,6 @@ def test_linha_de_comando(tmp_path):
     assert "'x3': 12" in r.stderr
 
 
-def test_instrucao_decodificada_mas_nao_executada_gera_erro_explicito():
-    from minirv.encoder import encode
-    with pytest.raises(ValueError, match="ainda não executada pela CPU: SUB"):
-        CPU([encode({"mnemonic": "SUB", "rd": 1, "rs1": 2, "rs2": 3})]).run()
+def test_instrucao_fora_do_contrato_gera_erro_explicito():
+    with pytest.raises(ValueError, match="instrução não suportada"):
+        CPU([0x403150B3]).run()

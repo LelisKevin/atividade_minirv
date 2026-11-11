@@ -17,7 +17,7 @@ Construir, semana a semana, um simulador pequeno, testável e rastreável de uma
 
 | Capacidade | Onde |
 | --- | --- |
-| CPU que executa `ADD`, `ADDI`, `LUI`, `LW`, `SW`, `BEQ` e `JAL` | `minirv/cpu.py` |
+| CPU que executa todas as 19 instruções do contrato RV32I v1 | `minirv/cpu.py` |
 | Programa interativo do reatômetro com MMIO | `minirv/reatometro_app.py`, `programs/reatometro.s`, `programs/reatometro.hex` |
 | Palavra de 32 bits, ALU (8 operações), 32 registradores (x0 = 0), PC | `word32.py`, `alu.py`, `registers.py`, `pc.py` |
 | Lógica combinacional (portas, MUX, decoder 2→4, controle) | `minirv/combinacional/` |
@@ -25,8 +25,8 @@ Construir, semana a semana, um simulador pequeno, testável e rastreável de uma
 | Contrato RV32I v1 (19 instruções), encode/decode e vetores | `docs/isa/rv32i-subset-v1.md`, `isa.py`, `encoder.py`, `decoder.py` |
 | Linha de base de desempenho e orçamento | `scripts/measure_baseline.py`, `benchmarks/baseline/` |
 
-**Ainda não existe:** montador de Assembly nem execução completa das 19 instruções RV32I v1. A CPU executa o
-subconjunto indicado acima; as demais instruções são decodificadas, mas ainda não executadas.
+**Ainda não existe:** montador de Assembly. A CPU executa as 19 instruções do contrato RV32I v1, mas não
+instruções fora desse subconjunto.
 
 ## Decisões fixadas pela disciplina
 
