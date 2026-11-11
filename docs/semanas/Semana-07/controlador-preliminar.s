@@ -2,7 +2,9 @@
 # NÃO é aceito por um montador completo (isso é da Semana 08); usa apenas as 19 instruções do contrato v1
 # (docs/isa/rv32i-subset-v1.md) e a sintaxe da seção 4 dele.
 #
-# Mapa de E/S mapeada em memória (premissa PRELIMINAR da dupla; a carga canônica oficial pode redefini-lo):
+# HISTÓRICO SUPERADO: este programa usa o mapa preliminar 0xFFFF0000, incompatível com o mapa MMIO atual
+# (0x80000000, 0x80000004 e 0x80000008). Mantido como evidência da Semana 07; não representa a configuração vigente.
+# Mapa preliminar de E/S mapeada em memória:
 #   base + 0  : leitura da amostra de temperatura (°C, inteiro)
 #   base + 4  : atuador   (1 = ligado, 0 = desligado)
 #   base + 8  : alarme    (1 = ativo,  0 = inativo)

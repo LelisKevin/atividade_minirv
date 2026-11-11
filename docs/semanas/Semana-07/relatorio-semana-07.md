@@ -1,5 +1,9 @@
 # Relatório da Semana 07 - Contrato do subconjunto RV32I (v1)
 
+> **Registro histórico:** o mapa MMIO `0xFFFF0000` mencionado neste relatório e no programa preliminar foi
+> superado. O mapa atual está documentado em `docs/adr/ADR-001-organizacao-do-repositorio-e-da-memoria.md`;
+> a memória e o subconjunto atual da CPU suportam os acessos `LW`/`SW` ao MMIO por meio do reatômetro.
+
 - **Dupla:** _(preencher)_ · **Revisor da PR:** _(preencher)_ · **Branch:** `entrega/semana-07-isa-rv32i`
 
 ## 1. Pergunta PBL e objetivo
@@ -77,7 +81,8 @@ opcode com largura errada, marcadores ausentes) é recusado na leitura.
 - `LUI` guarda o valor do campo de 20 bits (0..0xFFFFF) em `imm`.
 - Erros tipados (`InvalidRegisterError`, `ImmediateRangeError`, `UnsupportedInstructionError`, `FieldMismatchError`,
   `InvalidWordError`), todos `ValueError`.
-- O E/S mapeada (0xFFFF0000) do programa preliminar é **premissa da dupla**: o guia só dá o exemplo `LUI x10, 0xFFFF0`.
+- O mapa de E/S em `0xFFFF0000` foi a **premissa preliminar da dupla na Semana 07** e está superado; ele não é
+  compatível com o mapa MMIO atual (`0x80000000`, `0x80000004`, `0x80000008`).
 
 ## 7. Coerência com as semanas anteriores
 

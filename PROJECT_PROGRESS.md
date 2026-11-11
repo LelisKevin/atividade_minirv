@@ -54,13 +54,21 @@ Legenda: **Testado e aprovado** · **Implementado** (sem teste automatizável) �
 
 - Testado e aprovado: `isa.py` (lê o contrato `.md` como fonte única), `encoder.py`, `decoder.py` generalizado (19 instruções, 6 formatos), 43 vetores válidos + 43 negativos, ida e volta aleatória (200.000 palavras), conferência com o manual RISC-V e com o capstone, programa preliminar conferido contra o contrato. 574 testes, 574 aprovados (323 novos). Teste de mutação: 4 de 4 erros injetados foram detectados.
 - Implementado: `docs/isa/rv32i-subset-v1.md` (tabela, 6 layouts, sintaxe, erros, regularidade), `mapeamento-carga-isa.md`, `controlador-preliminar.s` (não executado), `ADR-TEMPLATE.md`, relatório.
-- Decisões: offsets de branch/jump múltiplos de 4; SLL/SRL por registrador; E/S em 0xFFFF0000 é premissa da dupla.
+- Decisões: offsets de branch/jump múltiplos de 4; SLL/SRL por registrador. O mapa preliminar de E/S `0xFFFF0000`
+  foi superado pelo mapa MMIO atual `0x80000000` / `+4` / `+8`.
 - **Contrato em "candidato a congelamento":** só vira "CONGELADA" depois da PR revisada (guia, Passo 12).
 - Pendente — ação sua: executar o simulador da Semana 07 e salvar `vetores-simulador.json`; revisão cruzada da PR; congelar o contrato; tag `s07`.
 
 ## Semana 8 — Consolidação (branch `entrega/semana-08-consolidacao`)
 
-- **Observação:** não existe documento da Semana 8 (foram enviados 7 arquivos). Esta semana seguiu o roteiro do pedido: testes completos, revisão de requisitos, documentação e versão definitiva. Nenhuma funcionalidade nova foi inventada.
+- **Observação:** não existe documento da Semana 8 (foram enviados 7 arquivos). Esta semana seguiu o roteiro do pedido: testes completos, revisão de requisitos, documentação e versão definitiva.
+- Implementado: memória de dados com MMIO legível e gravável em `0x80000000` (`io_input`), `0x80000004` (`io_signal`)
+  e `0x80000008` (`io_cycles`), com normalização para 32 bits.
+- Implementado: a CPU executa `ADD`, `ADDI`, `LUI`, `LW`, `SW`, `BEQ` e `JAL`; os arquivos Assembly e `.hex` do reatômetro
+  e a interface `python -m minirv.reatometro_app` usam esse subconjunto e o MMIO. Ciclos são medidos como uma
+  instrução por ciclo simulado.
+- Validado: teste automatizado de uma rodada do aplicativo, execução do Assembly com polling/ramificação/MMIO
+  e suíte completa do projeto.
 - Testado: clone limpo com venv novo e só `pytest` instalado: 531 aprovados + 1 ignorado (capstone opcional). Comandos do README executados com sucesso (soma, executor, benchmark).
 - Achado e tratado: o decodificador da Semana 07 deixou o benchmark ~42% mais lento (medição lado a lado, mesma máquina). Hipótese inicial (custo do `encode`) foi medida e descartada. Justificado na seção 12 de `orcamento-de-desempenho.md`; dentro do orçamento de 2 s.
 - Implementado: README final, `docs/checklist-final.md`, `docs/entrega-github.md`, `docs/arquitetura.md` atualizado, matriz final.

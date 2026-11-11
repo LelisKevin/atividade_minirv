@@ -19,6 +19,7 @@ flowchart LR
     ALU -->|endereço| DMEM[Memória de dados]
     REG -->|valor de STORE| DMEM
     DMEM -->|valor de LOAD| REG
+    DMEM -->|0x80000000 / +4 / +8| MMIO[Registradores MMIO]
     DEC -. eventos .-> TRACE[(Trace JSON)]
     REG -. eventos .-> TRACE
     PC -. eventos .-> TRACE
@@ -26,7 +27,7 @@ flowchart LR
     classDef comb fill:#d6ecff,stroke:#2b6cb0,color:#000;
     classDef seq fill:#ffe9c7,stroke:#b7791f,color:#000;
     class DEC,CTRL,MUX,ALU comb;
-    class PC,REG,IMEM,DMEM seq;
+    class PC,REG,IMEM,DMEM,MMIO seq;
 ```
 
 **Legenda:** azul = bloco **combinacional** (a saída depende só das entradas atuais: decodificador,
@@ -43,12 +44,20 @@ controle, MUX e ULA); laranja = bloco com **estado** (PC, registradores e memór
 | Registradores, PC | sequencial | `minirv/registers.py`, `minirv/pc.py` | 01, 05 |
 | ULA | combinacional | `minirv/alu.py` | 01, 05 |
 | Memória de instruções / de dados | sequencial | `minirv/instruction_memory.py`, `minirv/data_memory.py` | 06 |
+| MMIO (`0x80000000`, `+4`, `+8`) | estado de E/S | `minirv/data_memory.py` | mapa atual |
 | Ciclo FETCH→WRITEBACK (instruções controladas) | controle | `minirv/executor.py` | 06 |
-| CPU ADD/ADDI com trace por instrução | integração | `minirv/cpu.py` | 01 |
+| CPU (ADD, ADDI, LUI, LW, SW, BEQ, JAL) | integração | `minirv/cpu.py` | execução reduzida |
+| Aplicativo interativo do reatômetro | integração | `minirv/reatometro_app.py`, `programs/reatometro.s`, `programs/reatometro.hex` | MMIO |
 | Trace | observação | `minirv/trace.py` | 01 |
 
 ## O que ainda não existe
 
-A CPU decodifica as 19 instruções do contrato, mas executa só `ADD` e `ADDI`; o executor da Semana 06 roda
-apenas as três instruções controladas didáticas. O caminho de dados completo e o montador não fazem parte dos
-documentos recebidos (ver `docs/checklist-final.md`).
+A memória de dados implementa os registradores MMIO `io_input` (`0x80000000`), `io_signal` (`0x80000004`)
+e `io_cycles` (`0x80000008`), todos legíveis e graváveis. A CPU executa `ADD`, `ADDI`, `LUI`, `LW`, `SW`,
+`BEQ` e `JAL`, suficientes para o programa do reatômetro; as demais instruções do contrato são decodificadas,
+mas ainda não executadas. O aplicativo pode ser iniciado com `python -m minirv.reatometro_app`.
+
+No aplicativo, cada instrução executada corresponde a um ciclo simulado. O contador de ciclos da reação é a
+diferença de `instruction_count` durante o intervalo entre ativar o sinal MMIO e receber Enter; o Assembly
+também mantém em `x3` o número de iterações do laço e grava esse valor no registrador MMIO de ciclos, que o
+aplicativo substitui pelo total de instruções medido. O executor didático da Semana 06 permanece separado.

@@ -17,15 +17,16 @@ Construir, semana a semana, um simulador pequeno, testável e rastreável de uma
 
 | Capacidade | Onde |
 | --- | --- |
-| CPU que executa `ADD`/`ADDI` e gera trace JSON por instrução | `minirv/cpu.py`, `programs/soma.hex` |
+| CPU que executa `ADD`, `ADDI`, `LUI`, `LW`, `SW`, `BEQ` e `JAL` | `minirv/cpu.py` |
+| Programa interativo do reatômetro com MMIO | `minirv/reatometro_app.py`, `programs/reatometro.s`, `programs/reatometro.hex` |
 | Palavra de 32 bits, ALU (8 operações), 32 registradores (x0 = 0), PC | `word32.py`, `alu.py`, `registers.py`, `pc.py` |
 | Lógica combinacional (portas, MUX, decoder 2→4, controle) | `minirv/combinacional/` |
 | Memória de instruções e de dados, ciclo FETCH→WRITEBACK com rastro | `instruction_memory.py`, `data_memory.py`, `executor.py` |
 | Contrato RV32I v1 (19 instruções), encode/decode e vetores | `docs/isa/rv32i-subset-v1.md`, `isa.py`, `encoder.py`, `decoder.py` |
 | Linha de base de desempenho e orçamento | `scripts/measure_baseline.py`, `benchmarks/baseline/` |
 
-**Ainda não existe:** montador de Assembly e execução das 19 instruções (a CPU decodifica todas, mas executa só
-`ADD`/`ADDI`). Ver `docs/checklist-final.md`.
+**Ainda não existe:** montador de Assembly nem execução completa das 19 instruções RV32I v1. A CPU executa o
+subconjunto indicado acima; as demais instruções são decodificadas, mas ainda não executadas.
 
 ## Decisões fixadas pela disciplina
 
@@ -52,6 +53,7 @@ pytest -q                                        # roda todos os testes
 python -m minirv.cpu programs/soma.hex           # execução contínua (trace JSON no stdout)
 python -m minirv.cpu programs/soma.hex --step    # passo a passo (Enter avança)
 python -m minirv.cpu programs/soma.hex -o trace.json
+python -m minirv.reatometro_app                  # reatômetro interativo com MMIO
 python -m minirv.executor --trace trace.json     # ciclo de 5 estados (Semana 06)
 python scripts/measure_baseline.py               # linha de base de desempenho (Semana 02)
 ```

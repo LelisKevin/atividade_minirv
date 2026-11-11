@@ -1,6 +1,6 @@
 # ADR-001 - Organização do repositório e da memória
 
-Status: Proposto (a dupla confirma na revisão da PR da Semana 03; depois muda para Aceito)
+Status: Aceito (revisado para o mapa MMIO atual)
 
 ## Contexto
 
@@ -27,16 +27,27 @@ registrada na Semana 01", que o How To da Semana 01 não registra.
    - **memória de instruções e memória de dados separadas** (interfaces da Semana 06);
    - memória de dados com endereço base 0 e tamanho padrão de **4 KiB** (1.024 palavras), configurável no construtor;
    - PC de 32 bits, começa em 0 e avança de 4 em 4;
-   - a região 0xFFFF0000 em diante é reservada para E/S mapeada em memória (usada no programa preliminar da
-     Semana 07) e **não faz parte** da memória de dados nesta fase.
+   - a memória de dados inclui os registradores MMIO abaixo, fora da faixa da RAM:
+
+     | Endereço | Nome | Acesso |
+     | --- | --- | --- |
+     | `0x80000000` | `io_input` | leitura e escrita |
+     | `0x80000004` | `io_signal` | leitura e escrita |
+     | `0x80000008` | `io_cycles` | leitura e escrita |
+
+     Os três registradores iniciam em zero e armazenam valores normalizados para 32 bits. Endereços MMIO
+     não listados continuam inválidos; os demais acessos seguem as validações da RAM.
+   - `0xFFFF0000` não é o mapa MMIO vigente; esse endereço permanece somente nos materiais preliminares da
+     Semana 07, preservados como histórico superado.
 4. `word32` é o único lugar com a máscara de 32 bits.
 
 ## Consequências
 
 - Imports uniformes em código, testes e scripts; roteiros futuros devem ser lidos com a substituição `src/` → `minirv/`.
-- A memória de dados de 4 KiB limita a carga de trabalho; aumentar o tamanho não exige ADR (é parâmetro).
-- O ADR deve ser revisto se a disciplina fixar outro tamanho ou outro mapa de E/S.
+- A RAM de 4 KiB limita a carga de trabalho; aumentar o tamanho não exige ADR (é parâmetro).
+- A integração dos registradores MMIO com instruções `LW`/`SW` depende da implementação do caminho de execução
+  dessas instruções na CPU.
 
 ## Impacto
 
-`minirv/data_memory.py` (Semana 06), `docs/semanas/Semana-07/controlador-preliminar.s`.
+`minirv/data_memory.py`, `tests/test_data_memory.py`, `docs/arquitetura.md` e materiais da Semana 07.

@@ -20,3 +20,5 @@ class InstructionMemory:
     def read_word(self, pc):
         validar_endereco(NOME, pc, self.size_bytes)
         return self._palavras[pc // LARGURA_PALAVRA]
+
+    

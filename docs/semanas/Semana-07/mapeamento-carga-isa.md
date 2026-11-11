@@ -1,12 +1,14 @@
-# Mapeamento da carga canônica para o subconjunto RV32I v1 (Semana 07)
+# Mapeamento preliminar da carga para o subconjunto RV32I v1 (Semana 07) — histórico superado
 
-Para cada necessidade do controlador térmico, quais instruções do contrato a expressam e por quê.
-O exemplo concreto está em `controlador-preliminar.s` (E/S mapeada em memória; premissa preliminar da dupla,
-a carga canônica oficial pode redefinir endereços e limites).
+Este documento registra o mapa preliminar da Semana 07 (`0xFFFF0000`) e foi mantido como histórico. Ele não
+descreve o mapa MMIO vigente, que usa `0x80000000`, `0x80000004` e `0x80000008`; o programa
+`controlador-preliminar.s` também não é compatível com esse mapa atual.
+
+Para cada necessidade do controlador térmico preliminar, este documento registra quais instruções RV32I v1 a expressam.
 
 | Necessidade | Instruções | Justificativa | Onde aparece no programa |
 | --- | --- | --- | --- |
-| Leitura do sensor | `LUI` + `LW` | `LUI` monta a base 0xFFFF0000 (`LUI x10, 0xFFFF0`): endereços altos não cabem no imediato de 12 bits de `LW`/`ADDI`. `LW rd, imm(rs1)` lê a palavra da E/S com deslocamento de 0 a 2047 bytes, sem instrução especial de E/S. | `LUI x10, 0xFFFF0`; `LW x11, 0(x10)` |
+| Leitura do sensor | `LUI` + `LW` | No mapa preliminar, `LUI` monta a base 0xFFFF0000 (`LUI x10, 0xFFFF0`): endereços altos não cabem no imediato de 12 bits de `LW`/`ADDI`. `LW rd, imm(rs1)` lê a palavra da E/S com deslocamento de 0 a 2047 bytes, sem instrução especial de E/S. | `LUI x10, 0xFFFF0`; `LW x11, 0(x10)` |
 | Decisão por limites | `SLT` / `BLT` / `BEQ` / `BNE` | `SLT` produz 0/1 com sinal (permite guardar o resultado de uma comparação, como no alarme); `BLT` compara e desvia numa instrução só; `BEQ`/`BNE` tratam igualdade e desigualdade (por exemplo, atingir exatamente o total). A comparação "maior ou igual" sai de `BLT` com operandos trocados ou de `SLT` + `XOR` com 1, então não precisa de `BGE` no contrato. | `SLT x13, x11, x17`; `BLT x11, x15, abaixo`; `BLT x16, x11, escreve` |
 | Preservar/alterar estado | operações R / `ADDI` (+ `XOR`) | O estado do atuador fica num registrador. `ADDI x12, x0, 1/0` altera; **não escrever** nada preserva (a histerese acontece desviando por cima das instruções que alterariam). `ADD/SUB/AND/OR/XOR` e `ADDI/ANDI/ORI` cobrem inversão de bit, contadores e máscaras. | `ADDI x12, x0, 1`; `XOR x13, x13, x20` |
 | Escrever atuador | `LUI` + `SW` | Mesma base montada por `LUI`; `SW rs2, imm(rs1)` grava o estado (x12) no endereço base + 4. | `SW x12, 4(x10)` |

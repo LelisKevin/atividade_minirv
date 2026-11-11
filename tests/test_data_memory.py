@@ -3,6 +3,7 @@ import pytest
 from minirv.data_memory import DataMemory, MemoryAccessError
 
 TAM = 64
+MMIO = (0x80000000, 0x80000004, 0x80000008)
 
 
 @pytest.fixture
@@ -69,6 +70,41 @@ def test_valor_invalido_nao_altera_memoria(mem):
     with pytest.raises(ValueError):
         mem.write_word(0, 1.5)
     assert mem.read_word(0) == 9
+
+
+def test_registradores_mmio_iniciam_zerados(mem):
+    assert [mem.read_word(addr) for addr in MMIO] == [0, 0, 0]
+
+
+def test_registradores_mmio_permitem_leitura_escrita_e_normalizam_32_bits(mem):
+    valores = (-1, 0x12345678, (1 << 32) + 5)
+    for addr, valor in zip(MMIO, valores):
+        mem.write_word(addr, valor)
+    assert [mem.read_word(addr) for addr in MMIO] == [0xFFFFFFFF, 0x12345678, 5]
+
+
+def test_mmio_e_isolado_da_ram_e_registradores_independentes(mem):
+    mem.write_word(0, 7)
+    mem.write_word(MMIO[0], 11)
+    mem.write_word(MMIO[1], 13)
+    assert mem.read_word(0) == 7
+    assert [mem.read_word(addr) for addr in MMIO] == [11, 13, 0]
+
+
+@pytest.mark.parametrize("addr", [0x8000000C, 0xFFFF0000, float(0x80000000)])
+def test_enderecos_fora_da_ram_e_do_mapa_mmio_sao_rejeitados(mem, addr):
+    with pytest.raises(MemoryAccessError):
+        mem.read_word(addr)
+    with pytest.raises(MemoryAccessError):
+        mem.write_word(addr, 1)
+
+
+@pytest.mark.parametrize("addr", MMIO)
+def test_valor_invalido_nao_altera_registrador_mmio(mem, addr):
+    mem.write_word(addr, 9)
+    with pytest.raises(ValueError):
+        mem.write_word(addr, 1.5)
+    assert mem.read_word(addr) == 9
 
 
 @pytest.mark.parametrize("tam", [0, -4, 6, 1.0, None, True])
